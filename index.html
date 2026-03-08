@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudentHub Solutions | Enterprise Systems</title>
+    <title>StudentHub Solutions | Institutional Web Development</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
@@ -17,16 +17,16 @@
         
         /* Executive Card Design */
         .exec-card { transition: all 0.4s ease; cursor: pointer; border: 2px solid transparent; }
-        .exec-card:hover { transform: scale(1.05); border-color: #4ADE80; background: #0c3e5c; }
+        .exec-card:hover { transform: scale(1.05); border-color: #4ADE80; }
 
-        /* Dynamic Sidebar for Member Info */
-        #memberPanel { transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); transform: translateX(100%); }
-        #memberPanel.open { transform: translateX(0); }
+        /* Detail Panels */
+        .side-panel { transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); transform: translateX(100%); }
+        .side-panel.open { transform: translateX(0); }
     </style>
 </head>
 <body>
 
-    <nav class="fixed w-full z-[100] bg-white/95 backdrop-blur-md border-b px-6 py-4">
+    <nav class="fixed w-full z-[100] bg-white border-b px-6 py-4">
         <div class="max-w-[1440px] mx-auto flex justify-between items-center">
             <div class="flex items-center gap-3 cursor-pointer" onclick="showPage('home')">
                 <img src="https://i.ibb.co/B2ftrMpc/logo.png" class="h-8 w-auto">
@@ -34,31 +34,28 @@
             </div>
             
             <div class="hidden lg:flex gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
-                <span class="cursor-pointer hover:text-green-500" onclick="showPage('about')">The Executives</span>
-                <span class="cursor-pointer hover:text-green-500" onclick="showPage('products')">Expertise</span>
+                <span class="cursor-pointer hover:text-green-500" onclick="showPage('about')">The Team</span>
+                <span class="cursor-pointer hover:text-green-500" onclick="showPage('products')">Our Expertise</span>
                 <span class="cursor-pointer hover:text-green-500" onclick="showPage('partners')">Partnerships</span>
             </div>
 
-            <button onclick="showPage('inquire')" class="bg-[#0C4A6E] text-white px-8 py-3 rounded-full font-black text-[10px] uppercase hover:bg-green-500 transition shadow-lg">Inquire Now</button>
+            <button onclick="showPage('inquire')" class="bg-[#0C4A6E] text-white px-8 py-3 rounded-full font-black text-[10px] uppercase hover:bg-green-500 transition">Inquire Now</button>
         </div>
     </nav>
 
-    <div id="memberOverlay" onclick="closeMember()" class="fixed inset-0 bg-navy-blue/70 backdrop-blur-sm z-[110] hidden opacity-0 transition-opacity"></div>
-    <div id="memberPanel" class="fixed top-0 right-0 h-full w-full md:w-[500px] bg-white z-[120] shadow-2xl p-12 overflow-y-auto">
-        <button onclick="closeMember()" class="text-slate-400 font-black text-[10px] uppercase mb-10 tracking-widest hover:text-red-500">← Back to Team</button>
-        <div id="memberContent"></div>
+    <div id="sideOverlay" onclick="closePanel()" class="fixed inset-0 bg-navy-blue/70 backdrop-blur-sm z-[110] hidden"></div>
+    <div id="sidePanel" class="side-panel fixed top-0 right-0 h-full w-full md:w-[500px] bg-white z-[120] shadow-2xl p-12 overflow-y-auto">
+        <button onclick="closePanel()" class="text-slate-400 font-black text-[10px] uppercase mb-10 tracking-widest hover:text-red-500">← Close Window</button>
+        <div id="panelContent"></div>
     </div>
 
     <main class="pt-20">
         <section id="home" class="content-section active">
             <div class="navy-blue py-48 text-white px-6">
-                <div class="max-w-5xl mx-auto text-center animate__animated animate__fadeIn">
-                    <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter leading-none mb-8 italic">Connecting Students,<br><span class="accent-green">Simplifying Campus.</span></h1>
-                    <p class="text-blue-100/60 text-lg max-w-2xl mx-auto mb-12 font-light">The premier web development firm for educational digital transformation.</p>
-                    <div class="flex flex-wrap justify-center gap-4">
-                        <button onclick="showPage('inquire')" class="bg-green-500 px-12 py-5 rounded-full font-black text-xs uppercase shadow-2xl">Initiate Consultation</button>
-                        <button onclick="showPage('about')" class="bg-white/10 border border-white/20 px-12 py-5 rounded-full font-black text-xs uppercase hover:bg-white/20">The Leadership</button>
-                    </div>
+                <div class="max-w-5xl mx-auto text-center">
+                    <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter leading-none mb-8 italic">Simplifying <span class="accent-green">Campus Life</span> Through Tech.</h1>
+                    <p class="text-blue-100/60 text-lg max-w-2xl mx-auto mb-12">Institutional website development designed specifically for school environments.</p>
+                    <button onclick="showPage('products')" class="bg-green-500 px-12 py-5 rounded-full font-black text-xs uppercase shadow-2xl">View Our Expertise</button>
                 </div>
             </div>
         </section>
@@ -66,92 +63,77 @@
         <section id="about" class="content-section py-32 px-6">
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-24">
-                    <h2 class="text-5xl font-black text-navy uppercase italic mb-4">Executive Leadership</h2>
-                    <p class="text-slate-400 font-bold text-[10px] uppercase tracking-[0.4em]">Expert Visionaries Behind the Tech</p>
+                    <h2 class="text-5xl font-black text-navy uppercase italic mb-4">Leadership Team</h2>
+                    <p class="text-slate-400 font-bold text-[10px] uppercase tracking-[0.4em]">The faces behind StudentHub Solutions</p>
                 </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
-                    <div onclick="openMember('Lara')" class="exec-card p-8 rounded-[3.5rem] bg-navy-blue text-white text-center">
-                        <div class="w-24 h-24 rounded-[2rem] overflow-hidden mx-auto mb-6 border-2 border-green-500 shadow-lg">
-                            <img src="https://i.ibb.co/qYQMmtTr/Screenshot-2026-03-08-at-5-08-53-PM.png" class="w-full h-full object-cover">
-                        </div>
-                        <h4 class="font-black text-md leading-tight uppercase mb-2">LARA<br>BONGBONG</h4>
-                        <p class="text-green-400 font-black text-[8px] uppercase tracking-widest italic">Chief Executive</p>
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                    <div onclick="openMember('Lara')" class="exec-card p-6 rounded-[3rem] bg-navy-blue text-white text-center">
+                        <img src="https://i.ibb.co/qYQMmtTr/Screenshot-2026-03-08-at-5-08-53-PM.png" class="w-20 h-20 rounded-2xl mx-auto mb-4 object-cover border-2 border-green-400">
+                        <h4 class="font-black text-sm uppercase leading-tight">LARA<br>BONGBONG</h4>
                     </div>
-
-                    <div onclick="openMember('Kyla')" class="exec-card p-8 rounded-[3.5rem] bg-navy-blue text-white text-center">
-                        <div class="w-24 h-24 rounded-[2rem] overflow-hidden mx-auto mb-6 border-2 border-green-500 shadow-lg">
-                            <img src="https://i.ibb.co/pN9JTTn/Screenshot-2026-03-08-at-5-09-04-PM.png" class="w-full h-full object-cover">
-                        </div>
-                        <h4 class="font-black text-md leading-tight uppercase mb-2">KYLA NICOLE<br>DIMPASO</h4>
-                        <p class="text-green-400 font-black text-[8px] uppercase tracking-widest italic">Operations</p>
+                    <div onclick="openMember('Kyla')" class="exec-card p-6 rounded-[3rem] bg-navy-blue text-white text-center">
+                        <img src="https://i.ibb.co/pN9JTTn/Screenshot-2026-03-08-at-5-09-04-PM.png" class="w-20 h-20 rounded-2xl mx-auto mb-4 object-cover border-2 border-green-400">
+                        <h4 class="font-black text-sm uppercase leading-tight">KYLA NICOLE<br>DIMPASO</h4>
                     </div>
-
-                    <div onclick="openMember('Christine')" class="exec-card p-8 rounded-[3.5rem] bg-navy-blue text-white text-center">
-                        <div class="w-24 h-24 rounded-[2rem] overflow-hidden mx-auto mb-6 border-2 border-green-500 shadow-lg">
-                            <img src="https://i.ibb.co/kVN1DVPg/Screenshot-2026-03-08-at-5-09-17-PM.png" class="w-full h-full object-cover">
-                        </div>
-                        <h4 class="font-black text-md leading-tight uppercase mb-2">CHRISTINE DIANE<br>PANERIO</h4>
-                        <p class="text-green-400 font-black text-[8px] uppercase tracking-widest italic">Project Strategy</p>
+                    <div onclick="openMember('Christine')" class="exec-card p-6 rounded-[3rem] bg-navy-blue text-white text-center">
+                        <img src="https://i.ibb.co/kVN1DVPg/Screenshot-2026-03-08-at-5-09-17-PM.png" class="w-20 h-20 rounded-2xl mx-auto mb-4 object-cover border-2 border-green-400">
+                        <h4 class="font-black text-sm uppercase leading-tight">CHRISTINE DIANE<br>PANERIO</h4>
                     </div>
-
-                    <div onclick="openMember('Clark')" class="exec-card p-8 rounded-[3.5rem] bg-navy-blue text-white text-center">
-                        <div class="w-24 h-24 rounded-[2rem] overflow-hidden mx-auto mb-6 border-2 border-green-500 shadow-lg">
-                            <img src="https://i.ibb.co/6JHNftgj/Screenshot-2026-03-08-at-5-09-31-PM.png" class="w-full h-full object-cover">
-                        </div>
-                        <h4 class="font-black text-md leading-tight uppercase mb-2">CLARK<br>SASIL</h4>
-                        <p class="text-green-400 font-black text-[8px] uppercase tracking-widest italic">Technical Director</p>
+                    <div onclick="openMember('Clark')" class="exec-card p-6 rounded-[3rem] bg-navy-blue text-white text-center">
+                        <img src="https://i.ibb.co/6JHNftgj/Screenshot-2026-03-08-at-5-09-31-PM.png" class="w-20 h-20 rounded-2xl mx-auto mb-4 object-cover border-2 border-green-400">
+                        <h4 class="font-black text-sm uppercase leading-tight">CLARK<br>SASIL</h4>
                     </div>
-
-                    <div onclick="openMember('Brethney')" class="exec-card p-8 rounded-[3.5rem] bg-navy-blue text-white text-center">
-                        <div class="w-24 h-24 rounded-[2rem] overflow-hidden mx-auto mb-6 border-2 border-green-500 shadow-lg">
-                            <img src="https://i.ibb.co/vCYZgTCv/Screenshot-2026-03-08-at-5-09-39-PM.png" class="w-full h-full object-cover">
-                        </div>
-                        <h4 class="font-black text-md leading-tight uppercase mb-2">BRETHNEY KATE<br>TAÑOLA</h4>
-                        <p class="text-green-400 font-black text-[8px] uppercase tracking-widest italic">Communications</p>
+                    <div onclick="openMember('Brethney')" class="exec-card p-6 rounded-[3rem] bg-navy-blue text-white text-center">
+                        <img src="https://i.ibb.co/vCYZgTCv/Screenshot-2026-03-08-at-5-09-39-PM.png" class="w-20 h-20 rounded-2xl mx-auto mb-4 object-cover border-2 border-green-400">
+                        <h4 class="font-black text-sm uppercase leading-tight">BRETHNEY KATE<br>TAÑOLA</h4>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="partners" class="content-section py-32 bg-slate-100 px-6">
+        <section id="products" class="content-section py-32 bg-slate-100 px-6">
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-20">
-                    <h2 class="text-4xl font-black text-navy uppercase italic">Global Ecosystem</h2>
-                    <p class="text-slate-400 font-bold text-[10px] uppercase tracking-widest mt-2">Verified Professional Alliances</p>
+                    <h2 class="text-4xl font-black text-navy uppercase italic">Our Core Expertise</h2>
+                    <p class="text-slate-400 font-bold text-[10px] uppercase tracking-widest mt-2">Click to see full service specifications</p>
                 </div>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div onclick="openExpertise('Portals')" class="bg-white p-12 rounded-[4rem] shadow-sm hover:shadow-2xl transition-all cursor-pointer group border-2 border-transparent hover:border-green-400">
+                        <div class="text-4xl mb-6">🏛️</div>
+                        <h3 class="text-2xl font-black text-navy uppercase italic mb-4">Institutional Portals</h3>
+                        <p class="text-slate-500 text-sm mb-8 leading-relaxed italic">Centralized hubs for student information, faculty directories, and campus news.</p>
+                        <span class="text-[9px] font-black uppercase text-green-500">View Full Detail +</span>
+                    </div>
+                    <div onclick="openExpertise('Admin')" class="bg-white p-12 rounded-[4rem] shadow-sm hover:shadow-2xl transition-all cursor-pointer group border-2 border-transparent hover:border-green-400">
+                        <div class="text-4xl mb-6">⚙️</div>
+                        <h3 class="text-2xl font-black text-navy uppercase italic mb-4">Admin Ecosystems</h3>
+                        <p class="text-slate-500 text-sm mb-8 leading-relaxed italic">Secure backend systems for managing organizational data and student services.</p>
+                        <span class="text-[9px] font-black uppercase text-green-500">View Full Detail +</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="partners" class="content-section py-32 bg-navy-blue px-6">
+            <div class="max-w-7xl mx-auto text-center">
+                <h2 class="text-4xl font-black text-white uppercase italic mb-16">Global Partnerships</h2>
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="bg-white p-12 rounded-[3.5rem] shadow-sm border-t-8 border-navy-blue text-center">
-                        <h4 class="font-black text-navy uppercase text-xs mb-4">Academic Partners</h4>
-                        <p class="text-slate-500 text-xs leading-relaxed italic">Strategic collaboration with Cebu-based institutions for pilot-testing new campus modules.</p>
-                    </div>
-                    <div class="bg-white p-12 rounded-[3.5rem] shadow-sm border-t-8 border-green-400 text-center">
-                        <h4 class="font-black text-navy uppercase text-xs mb-4">Cloud Support</h4>
-                        <p class="text-slate-500 text-xs leading-relaxed italic">Partnership with global hosting giants to ensure institutional portals stay online 24/7.</p>
-                    </div>
-                    <div class="bg-white p-12 rounded-[3.5rem] shadow-sm border-t-8 border-navy-blue text-center">
-                        <h4 class="font-black text-navy uppercase text-xs mb-4">Data Security</h4>
-                        <p class="text-slate-500 text-xs leading-relaxed italic">Compliance-focused alliances with cybersecurity firms to protect sensitive student records.</p>
-                    </div>
-                    <div class="bg-white p-12 rounded-[3.5rem] shadow-sm border-t-8 border-green-400 text-center">
-                        <h4 class="font-black text-navy uppercase text-xs mb-4">Dev Hubs</h4>
-                        <p class="text-slate-500 text-xs leading-relaxed italic">Connecting with local talent communities to drive innovation in regional tech solutions.</p>
-                    </div>
+                    <div class="p-10 bg-white rounded-[3rem]"><h4 class="font-black text-navy text-[10px] uppercase mb-2">Cloud Tech</h4><p class="text-slate-400 text-[10px] italic">Scalable hosting solutions.</p></div>
+                    <div class="p-10 bg-white rounded-[3rem]"><h4 class="font-black text-navy text-[10px] uppercase mb-2">Academe</h4><p class="text-slate-400 text-[10px] italic">Pilot testing with universities.</p></div>
+                    <div class="p-10 bg-white rounded-[3rem]"><h4 class="font-black text-navy text-[10px] uppercase mb-2">Security</h4><p class="text-slate-400 text-[10px] italic">Data protection protocols.</p></div>
+                    <div class="p-10 bg-white rounded-[3rem]"><h4 class="font-black text-navy text-[10px] uppercase mb-2">Dev Hubs</h4><p class="text-slate-400 text-[10px] italic">Local innovation centers.</p></div>
                 </div>
             </div>
         </section>
 
         <section id="inquire" class="content-section py-32 px-6">
-            <div class="max-w-3xl mx-auto bg-white p-16 rounded-[4rem] shadow-2xl border border-slate-100">
-                <h2 class="text-4xl font-black text-navy uppercase italic mb-8 text-center">Contact The Firm</h2>
+            <div class="max-w-3xl mx-auto bg-white p-16 rounded-[4rem] shadow-2xl border">
+                <h2 class="text-4xl font-black text-navy uppercase italic mb-8 text-center">Inquire Now</h2>
                 <form class="space-y-6">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <input type="text" placeholder="School/Institution Name" class="w-full p-5 bg-slate-50 rounded-2xl outline-none focus:ring-2 ring-green-400">
-                        <input type="text" placeholder="Contact Person" class="w-full p-5 bg-slate-50 rounded-2xl outline-none focus:ring-2 ring-green-400">
-                    </div>
-                    <input type="email" placeholder="Official Business Email" class="w-full p-5 bg-slate-50 rounded-2xl outline-none focus:ring-2 ring-green-400">
-                    <textarea placeholder="Outline your institutional requirements..." class="w-full p-5 bg-slate-50 rounded-2xl outline-none focus:ring-2 ring-green-400 h-32"></textarea>
-                    <button type="button" onclick="alert('Inquiry successfully sent.')" class="w-full bg-[#0C4A6E] text-white py-6 rounded-3xl font-black uppercase tracking-widest hover:bg-green-500 shadow-xl transition">Submit Request</button>
+                    <input type="text" placeholder="School Name" class="w-full p-5 bg-slate-50 rounded-2xl outline-none">
+                    <input type="email" placeholder="Email" class="w-full p-5 bg-slate-50 rounded-2xl outline-none">
+                    <textarea placeholder="Services Needed..." class="w-full p-5 bg-slate-50 rounded-2xl outline-none h-32"></textarea>
+                    <button type="button" onclick="alert('Sent!')" class="w-full bg-navy-blue text-white py-6 rounded-3xl font-black uppercase">Submit Lead</button>
                 </form>
             </div>
         </section>
@@ -164,63 +146,64 @@
             window.scrollTo(0,0);
         }
 
-        const members = {
-            'Lara': {
-                name: 'Lara Bongbong',
-                role: 'Lead Executive Officer',
-                info: 'Oversees the strategic direction and growth of StudentHub Solutions. Directs high-level institutional negotiations and vision alignment.',
-                img: 'https://i.ibb.co/qYQMmtTr/Screenshot-2026-03-08-at-5-08-53-PM.png'
+        function closePanel() {
+            document.getElementById('sidePanel').classList.remove('open');
+            document.getElementById('sideOverlay').classList.add('hidden');
+        }
+
+        // EXPERTISE DATA ENGINE
+        const expertiseData = {
+            'Portals': {
+                title: 'Institutional Portals',
+                desc: 'A comprehensive digital gateway for your campus.',
+                features: ['Custom School Branding', 'Dynamic Student News Feed', 'Faculty & Staff Directories', 'Mobile-Responsive Interface']
             },
-            'Kyla': {
-                name: 'Kyla Nicole Dimpaso',
-                role: 'Operations Manager',
-                info: 'Ensures operational excellence and workflow efficiency. Manages project timelines and business development logistics.',
-                img: 'https://i.ibb.co/pN9JTTn/Screenshot-2026-03-08-at-5-09-04-PM.png'
-            },
-            'Christine': {
-                name: 'Christine Diane Panerio',
-                role: 'Project Strategist',
-                info: 'Responsible for localized research and integration models. Designs strategies that meet the unique digital needs of campus communities.',
-                img: 'https://i.ibb.co/kVN1DVPg/Screenshot-2026-03-08-at-5-09-17-PM.png'
-            },
-            'Clark': {
-                name: 'Clark Sasil',
-                role: 'Technical Director',
-                info: 'Architect of StudentHub Solutions infrastructure. Leads development of secure database systems and backend institutional portals.',
-                img: 'https://i.ibb.co/6JHNftgj/Screenshot-2026-03-08-at-5-09-31-PM.png'
-            },
-            'Brethney': {
-                name: 'Brethney Kate Tañola',
-                role: 'Communications Head',
-                info: 'Manages all institutional communications and stakeholder relationships. Liaisons between clients and the development team.',
-                img: 'https://i.ibb.co/vCYZgTCv/Screenshot-2026-03-08-at-5-09-39-PM.png'
+            'Admin': {
+                title: 'Admin Ecosystems',
+                desc: 'Robust management systems for school administrators.',
+                features: ['Secure Member Databases', 'Financial Tracking Tools', 'Automated Reporting', 'Encryption-Protected Storage']
             }
         };
 
-        function openMember(key) {
-            const data = members[key];
+        function openExpertise(key) {
+            const data = expertiseData[key];
             const html = `
-                <div class="w-full aspect-square rounded-[3.5rem] overflow-hidden bg-slate-100 mb-10 border-4 border-green-500 shadow-xl">
-                    <img src="${data.img}" class="w-full h-full object-cover">
+                <div class="p-8 bg-green-500 rounded-[3rem] mb-10 text-white">
+                    <h2 class="text-3xl font-black uppercase italic mb-2">${data.title}</h2>
+                    <p class="text-xs font-bold uppercase opacity-80">Professional Suite</p>
                 </div>
-                <h2 class="text-3xl font-black text-navy uppercase italic mb-2 tracking-tighter">${data.name}</h2>
-                <p class="text-green-500 font-black text-[10px] uppercase tracking-widest mb-10 italic">${data.role}</p>
-                <p class="text-slate-500 text-sm leading-relaxed mb-12">${data.info}</p>
-                <div class="p-8 bg-slate-50 rounded-[2.5rem] border">
-                    <h5 class="text-[9px] font-black uppercase text-navy mb-2 tracking-widest">Focus Area</h5>
-                    <p class="text-[11px] font-bold text-slate-400">Enterprise Campus Transformation</p>
-                </div>
+                <p class="text-slate-600 mb-8 leading-relaxed font-semibold italic">${data.desc}</p>
+                <h5 class="text-[10px] font-black uppercase text-navy mb-4 tracking-widest">Key Features:</h5>
+                <ul class="space-y-4">
+                    ${data.features.map(f => `<li class="flex gap-4 items-center text-sm font-bold text-navy"><span class="w-2 h-2 bg-green-500 rounded-full"></span> ${f}</li>`).join('')}
+                </ul>
+                <button onclick="showPage('inquire'); closePanel();" class="w-full mt-12 bg-navy-blue text-white py-5 rounded-2xl font-black uppercase text-xs">Request Consultation</button>
             `;
-            document.getElementById('memberContent').innerHTML = html;
-            document.getElementById('memberPanel').classList.add('open');
-            document.getElementById('memberOverlay').classList.remove('hidden');
-            setTimeout(() => document.getElementById('memberOverlay').style.opacity = '1', 10);
+            document.getElementById('panelContent').innerHTML = html;
+            document.getElementById('sidePanel').classList.add('open');
+            document.getElementById('sideOverlay').classList.remove('hidden');
         }
 
-        function closeMember() {
-            document.getElementById('memberPanel').classList.remove('open');
-            document.getElementById('memberOverlay').style.opacity = '0';
-            setTimeout(() => document.getElementById('memberOverlay').classList.add('hidden'), 300);
+        // TEAM DATA ENGINE (Keeping your images)
+        const teamData = {
+            'Lara': { name: 'Lara Bongbong', role: 'Chief Executive', img: 'https://i.ibb.co/qYQMmtTr/Screenshot-2026-03-08-at-5-08-53-PM.png', bio: 'Directs the strategic vision of StudentHub Solutions.' },
+            'Kyla': { name: 'Kyla Nicole Dimpaso', role: 'Operations', img: 'https://i.ibb.co/pN9JTTn/Screenshot-2026-03-08-at-5-09-04-PM.png', bio: 'Manages logistics and business development.' },
+            'Christine': { name: 'Christine Diane Panerio', role: 'Strategy', img: 'https://i.ibb.co/kVN1DVPg/Screenshot-2026-03-08-at-5-09-17-PM.png', bio: 'Develops localized research and integration models.' },
+            'Clark': { name: 'Clark Sasil', role: 'Technical', img: 'https://i.ibb.co/6JHNftgj/Screenshot-2026-03-08-at-5-09-31-PM.png', bio: 'Architect of secure database and backend systems.' },
+            'Brethney': { name: 'Brethney Kate Tañola', role: 'Communications', img: 'https://i.ibb.co/vCYZgTCv/Screenshot-2026-03-08-at-5-09-39-PM.png', bio: 'Official liaison between clients and the dev team.' }
+        };
+
+        function openMember(key) {
+            const data = teamData[key];
+            const html = `
+                <img src="${data.img}" class="w-full h-80 object-cover rounded-[3rem] mb-8 shadow-xl border-4 border-green-500">
+                <h2 class="text-3xl font-black text-navy uppercase italic mb-2">${data.name}</h2>
+                <p class="text-green-500 font-black text-[10px] uppercase mb-8 italic">${data.role}</p>
+                <p class="text-slate-500 text-sm leading-relaxed">${data.bio}</p>
+            `;
+            document.getElementById('panelContent').innerHTML = html;
+            document.getElementById('sidePanel').classList.add('open');
+            document.getElementById('sideOverlay').classList.remove('hidden');
         }
     </script>
 </body>
