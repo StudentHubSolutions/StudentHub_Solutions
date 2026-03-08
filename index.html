@@ -3,125 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudentHub Solutions | Growth & Innovation</title>
+    <title>StudentHub Solutions | Connecting Students, Simplifying Campus Life</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
-        
-        /* NEW COLOR PALETTE: Sky Blue & Mint Green */
-        .hero-gradient { background: linear-gradient(135deg, #0C4A6E 0%, #075985 100%); }
-        .accent-green { color: #4ADE80; } /* Mint Green */
-        .bg-mint { background-color: #4ADE80; }
-        .border-mint { border-color: #4ADE80; }
+        .navy-blue { background-color: #0C4A6E; }
         .text-navy { color: #0C4A6E; }
-        
-        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .team-card:hover img { transform: scale(1.05); filter: grayscale(0); }
+        .accent-green { color: #4ADE80; }
+        .bg-mint { background-color: #4ADE80; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900">
+<body class="bg-white text-slate-900">
 
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100">
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <img src="https://i.ibb.co/B2ftrMpc/logo.png" class="h-9 w-auto" alt="Logo">
-                <div class="font-black text-xl tracking-tighter uppercase italic text-navy">StudentHub<span class="accent-green">Solutions</span></div>
+                <img src="https://i.ibb.co/B2ftrMpc/logo.png" class="h-8 w-auto" alt="Logo">
+                <div class="font-black text-xl tracking-tighter uppercase text-navy italic">StudentHub<span class="accent-green">Solutions</span></div>
             </div>
-            <div class="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest items-center">
-                <a href="#services" class="hover:text-green-500 transition">Services</a>
-                <a href="#portfolio" class="hover:text-green-500 transition">Portfolio</a>
-                <a href="#about" class="hover:text-green-500 transition">Team</a>
-                <a href="#contact" class="bg-navy-900 bg-[#0C4A6E] text-white px-6 py-2 rounded-full hover:bg-green-500 transition shadow-lg shadow-blue-900/20">Work With Us</a>
+            <div class="hidden md:flex gap-8 text-[11px] font-bold uppercase tracking-widest">
+                <a href="#about" class="hover:text-green-500">About Us</a>
+                <a href="#services" class="hover:text-green-500">Services</a>
+                <a href="#pricing" class="hover:text-green-500">Plans</a>
+                <a href="#team" class="hover:text-green-500">Our Group</a>
+                <a href="#contact" class="bg-[#0C4A6E] text-white px-5 py-2 rounded-full hover:bg-green-500 transition">Inquire Now</a>
             </div>
         </div>
     </nav>
 
-    <section class="hero-gradient min-h-screen flex items-center pt-20 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-96 h-96 bg-green-400/10 rounded-full blur-3xl -mr-20 -mt-20"></div>
-        
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
-            <div class="text-white space-y-8">
-                <span class="bg-green-500/20 text-green-400 px-4 py-1 rounded-full font-black tracking-widest uppercase text-[10px] border border-green-500/30">Cebu-Based Digital Innovation</span>
-                <h1 class="text-6xl md:text-7xl font-extrabold tracking-tighter leading-tight">Fresh Solutions for <span class="accent-green italic">Modern Schools.</span></h1>
-                <p class="text-blue-100/70 text-lg max-w-lg leading-relaxed">We combine psychology-driven research with modern web technology to build ecosystems that actually work for students.</p>
-                <div class="flex gap-4">
-                    <a href="#portfolio" class="bg-green-500 text-white px-8 py-4 rounded-full font-bold text-sm hover:bg-white hover:text-navy transition-all shadow-xl shadow-green-500/20">View Our Projects</a>
-                    <a href="#contact" class="border border-blue-300/30 text-white px-8 py-4 rounded-full font-bold text-sm hover:bg-white/10 transition">Get Started</a>
+    <section class="navy-blue pt-40 pb-32 text-white overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="max-w-3xl">
+                <span class="text-green-400 font-black tracking-widest uppercase text-xs">Connecting Students, Simplifying Campus Life</span>
+                <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter mt-4 leading-[0.9]">A Website <br><span class="accent-green italic">Development</span> Company.</h1>
+                <p class="text-blue-100/70 mt-8 text-lg max-w-xl leading-relaxed">Dedicated to helping schools enhance digital services through accessible, school-sanctioned ecosystems that solve unorganized campus commerce.</p>
+                <div class="flex gap-4 mt-10">
+                    <a href="#services" class="bg-green-500 text-white px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest">Our Solutions</a>
+                    <a href="https://studenthubsoln.com" class="border border-white/20 px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-white/10 transition">studenthubsoln.com</a>
                 </div>
             </div>
-            <div class="hidden md:block relative">
-                 <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800" class="rounded-[3rem] shadow-2xl border-4 border-white/10" alt="Tech Dashboard">
-                 <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-3xl shadow-xl">
-                    <p class="text-navy font-black italic text-2xl">100%</p>
-                    <p class="text-slate-400 font-bold text-[10px] uppercase tracking-widest">Student Verified</p>
-                 </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="text-3xl font-black text-navy uppercase italic">The Innovation Model</h2>
+                <p class="text-slate-500 mt-4 leading-relaxed italic">Bridging the gap between formal administration and informal student culture through a Hyper-Localized Integration Model.</p>
+            </div>
+            <div class="grid grid-cols-1 gap-4">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-green-400">
+                    <h4 class="font-black text-navy text-sm uppercase">Trust-Based Ecosystem</h4>
+                    <p class="text-xs text-slate-500 mt-2">Eliminates anonymity risks by verifying marketplace users through internal school databases.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-blue-400">
+                    <h4 class="font-black text-navy text-sm uppercase">Modular Scalability</h4>
+                    <p class="text-xs text-slate-500 mt-2">"Architecture-as-a-Service" allows schools to scale up tools without data migration issues.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="services" class="py-32 bg-white">
         <div class="max-w-7xl mx-auto px-6 text-center mb-20">
-            <h2 class="text-4xl font-black tracking-tighter italic uppercase text-navy">What We Do<span class="accent-green">.</span></h2>
+            <h2 class="text-4xl font-black text-navy uppercase italic">Products & Services</h2>
+            <p class="text-slate-400 mt-2 uppercase tracking-widest text-[10px] font-bold">Customizable Digital Platforms for Colleges</p>
         </div>
-        <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto px-6">
-            <div class="p-10 bg-slate-50 rounded-[2.5rem] border-b-4 border-blue-500 hover:border-green-500 transition-all group">
-                <div class="w-14 h-14 bg-blue-100 rounded-2xl mb-6 flex items-center justify-center text-blue-600 text-2xl group-hover:bg-green-500 group-hover:text-white transition-all">📂</div>
-                <h3 class="font-black text-xl mb-4 text-navy">Digital Research</h3>
-                <p class="text-slate-500 text-sm leading-relaxed">Using qualitative data to understand student pain points and design user-friendly platforms.</p>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="p-8 rounded-3xl bg-slate-50 border group hover:border-green-500 transition">
+                <div class="w-12 h-12 bg-blue-100 rounded-xl mb-6 flex items-center justify-center text-xl group-hover:bg-green-500 group-hover:text-white">🎓</div>
+                <h3 class="font-black text-navy uppercase mb-3">University Development</h3>
+                <p class="text-sm text-slate-500">Customized university websites designed specifically for complex school environments.</p>
             </div>
-            <div class="p-10 bg-slate-50 rounded-[2.5rem] border-b-4 border-blue-500 hover:border-green-500 transition-all group">
-                <div class="w-14 h-14 bg-blue-100 rounded-2xl mb-6 flex items-center justify-center text-blue-600 text-2xl group-hover:bg-green-500 group-hover:text-white transition-all">🌐</div>
-                <h3 class="font-black text-xl mb-4 text-navy">Web Architecture</h3>
-                <p class="text-slate-500 text-sm leading-relaxed">Building lightning-fast marketplaces and organizational tools tailored for university life.</p>
+            <div class="p-8 rounded-3xl bg-slate-50 border group hover:border-green-500 transition">
+                <div class="w-12 h-12 bg-blue-100 rounded-xl mb-6 flex items-center justify-center text-xl group-hover:bg-green-500 group-hover:text-white">🛒</div>
+                <h3 class="font-black text-navy uppercase mb-3">Campus Marketplace</h3>
+                <p class="text-sm text-slate-500">Verified P2P systems for students to trade textbooks, uniforms, and dorm essentials safely.</p>
             </div>
-            <div class="p-10 bg-slate-50 rounded-[2.5rem] border-b-4 border-blue-500 hover:border-green-500 transition-all group">
-                <div class="w-14 h-14 bg-blue-100 rounded-2xl mb-6 flex items-center justify-center text-blue-600 text-2xl group-hover:bg-green-500 group-hover:text-white transition-all">✨</div>
-                <h3 class="font-black text-xl mb-4 text-navy">Brand Growth</h3>
-                <p class="text-slate-500 text-sm leading-relaxed">Helping student-led businesses and organizations reach their full potential on campus.</p>
+            <div class="p-8 rounded-3xl bg-slate-50 border group hover:border-green-500 transition">
+                <div class="w-12 h-12 bg-blue-100 rounded-xl mb-6 flex items-center justify-center text-xl group-hover:bg-green-500 group-hover:text-white">🛡️</div>
+                <h3 class="font-black text-navy uppercase mb-3">Security Integration</h3>
+                <p class="text-sm text-slate-500">Advanced cybersecurity, data protection, and system integration for administrative safety.</p>
             </div>
         </div>
     </section>
 
-    <section id="about" class="py-32 bg-slate-50">
+    <section id="pricing" class="py-32 bg-slate-900 text-white">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="relative">
-                    <img src="https://i.ibb.co/nMwbnJG6/642805409-2374987332964932-6853749201352027408-n.jpg" class="rounded-[3rem] shadow-2xl grayscale hover:grayscale-0 transition duration-700" alt="Team Photo">
-                    <div class="absolute -top-6 -right-6 bg-green-500 text-white p-8 rounded-full font-black italic shadow-lg">Our Team</div>
+            <h2 class="text-3xl font-black italic uppercase accent-green mb-16">Subscription Price List</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-10 rounded-3xl border border-slate-700 bg-slate-800">
+                    <h3 class="font-black text-xl uppercase italic">Basic Plan</h3>
+                    <p class="text-slate-400 text-[10px] uppercase font-bold mt-2">Core Features for Individuals</p>
+                    <div class="text-4xl font-black my-8">$25<span class="text-sm text-slate-500">/mo</span></div>
+                    <ul class="text-sm space-y-4 text-slate-300">
+                        <li>• Limited Transaction Volume</li>
+                        <li>• Email Support</li>
+                    </ul>
                 </div>
-                <div class="space-y-6">
-                    <h2 class="text-5xl font-black tracking-tighter italic text-navy">Human-Centered <span class="accent-green">Logic.</span></h2>
-                    <p class="text-slate-600 leading-relaxed text-lg">Founded by Psychology students from CTU, StudentHub Solutions isn't just about code. We understand the <span class="font-bold">social dynamics</span> behind every transaction and interaction.</p>
-                    <div class="flex gap-4 items-center p-4 bg-white rounded-2xl border-l-4 border-green-500 shadow-sm">
-                        <span class="text-2xl">🏆</span>
-                        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">SULAGPO 2025: Best Booth Award Recipients</p>
+                <div class="p-10 rounded-3xl border-2 border-green-500 bg-slate-800 relative">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-green-500 text-white text-[9px] font-black px-4 py-1 rounded-full uppercase">Most Popular</div>
+                    <h3 class="font-black text-xl uppercase italic">Standard Plan</h3>
+                    <p class="text-slate-400 text-[10px] uppercase font-bold mt-2">Small Business Growth</p>
+                    <div class="text-4xl font-black my-8">$35<span class="text-sm text-slate-500">/mo</span></div>
+                    <ul class="text-sm space-y-4 text-slate-300">
+                        <li>• Moderate Transaction Volume</li>
+                        <li>• Priority Email & Chat Support</li>
+                    </ul>
+                </div>
+                <div class="p-10 rounded-3xl border border-slate-700 bg-slate-800">
+                    <h3 class="font-black text-xl uppercase italic">Premium Plan</h3>
+                    <p class="text-slate-400 text-[10px] uppercase font-bold mt-2">Advanced Functionalities</p>
+                    <div class="text-4xl font-black my-8">$45<span class="text-sm text-slate-500">/mo</span></div>
+                    <ul class="text-sm space-y-4 text-slate-300">
+                        <li>• High Transaction Volume</li>
+                        <li>• 24/7 Phone & Live Chat Support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="md:w-1/2">
+                    <img src="https://i.ibb.co/nMwbnJG6/642805409-2374987332964932-6853749201352027408-n.jpg" class="rounded-[3rem] shadow-2xl" alt="Team Photo">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-4xl font-black text-navy uppercase italic mb-8">Executive Group 3</h2>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="border-l-2 border-green-500 pl-4 py-2">
+                            <p class="font-black text-navy uppercase text-sm">Lara Bongbong</p>
+                        </div>
+                        <div class="border-l-2 border-green-500 pl-4 py-2">
+                            <p class="font-black text-navy uppercase text-sm">Kyla Nicole Dimpaso</p>
+                        </div>
+                        <div class="border-l-2 border-green-500 pl-4 py-2">
+                            <p class="font-black text-navy uppercase text-sm">Christine Diane Panerio</p>
+                        </div>
+                        <div class="border-l-2 border-green-500 pl-4 py-2">
+                            <p class="font-black text-navy uppercase text-sm">Clark Sasil</p>
+                        </div>
+                        <div class="border-l-2 border-green-500 pl-4 py-2">
+                            <p class="font-black text-navy uppercase text-sm">Brethney Kate Tañola</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-32 bg-white">
-        <div class="max-w-3xl mx-auto px-6 text-center">
-            <h2 class="text-5xl font-black mb-12 tracking-tighter italic text-navy underline decoration-green-400">Let's Connect<span class="accent-green">.</span></h2>
-            <form class="space-y-4 text-left">
-                <div class="grid md:grid-cols-2 gap-4">
-                    <input type="text" placeholder="Full Name" class="w-full p-6 rounded-3xl bg-slate-50 border-2 border-transparent focus:border-green-400 focus:bg-white outline-none transition-all font-bold">
-                    <input type="text" placeholder="Degree / Org" class="w-full p-6 rounded-3xl bg-slate-50 border-2 border-transparent focus:border-green-400 focus:bg-white outline-none transition-all font-bold">
-                </div>
-                <input type="email" placeholder="Email Address" class="w-full p-6 rounded-3xl bg-slate-50 border-2 border-transparent focus:border-green-400 focus:bg-white outline-none transition-all font-bold">
-                <textarea placeholder="Tell us about your digital project..." rows="5" class="w-full p-6 rounded-3xl bg-slate-50 border-2 border-transparent focus:border-green-400 focus:bg-white outline-none transition-all font-bold"></textarea>
-                <button class="w-full bg-[#0C4A6E] text-white py-6 rounded-3xl font-black tracking-widest hover:bg-green-500 shadow-xl transition-all">SUBMIT INQUIRY</button>
-            </form>
-        </div>
-    </section>
-
-    <footer class="py-12 bg-white border-t text-center">
-        <div class="font-black text-sm tracking-tighter uppercase italic text-navy">StudentHub<span class="accent-green">Solutions</span></div>
-        <p class="text-slate-400 font-bold text-[9px] uppercase tracking-widest mt-4">
-            &copy; 2026 Designed with Precision for CTU Students.
-        </p>
+    <footer class="py-12 border-t text-center bg-slate-50">
+        <div class="font-black text-sm tracking-tighter uppercase text-navy mb-4">StudentHub<span class="accent-green">Solutions</span></div>
+        <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">&copy; 2026 StudentHub Solutions | All Rights Reserved.</p>
     </footer>
 
 </body>
