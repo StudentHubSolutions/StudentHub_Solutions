@@ -12,254 +12,272 @@
         .navy-blue { background-color: #0C4A6E; }
         .text-navy { color: #0C4A6E; }
         .accent-green { color: #4ADE80; }
-        .nav-link { cursor: pointer; transition: all 0.3s; }
+        .nav-link { cursor: pointer; transition: all 0.3s; position: relative; }
         .nav-link:hover { color: #4ADE80; }
         .content-section { display: none; }
-        .content-section.active { display: block; animation: fadeIn 0.5s; }
+        .content-section.active { display: block; animation: fadeIn 0.4s ease-in-out; }
+        
+        /* Dashing Executive Cards */
+        .exec-card { transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        .exec-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px -10px rgba(12, 74, 110, 0.2); border-color: #4ADE80; }
+        
+        /* Side Panel for Product Details */
+        #productPanel { transition: transform 0.4s ease; transform: translateX(100%); }
+        #productPanel.open { transform: translateX(0); }
     </style>
 </head>
 <body>
 
-    <nav class="fixed w-full z-[100] bg-white border-b shadow-sm">
-        <div class="max-w-[1400px] mx-auto px-6">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex items-center gap-3 nav-link" onclick="showPage('home')">
-                    <img src="https://i.ibb.co/B2ftrMpc/logo.png" class="h-8 w-auto" alt="Logo">
-                    <div class="font-black text-xl tracking-tighter uppercase text-navy italic">StudentHub<span class="accent-green">Solutions</span></div>
-                </div>
-                
-                <div class="hidden xl:flex gap-6 text-[10px] font-bold uppercase tracking-widest text-slate-500">
-                    <span class="nav-link" onclick="showPage('about')">About Us</span>
-                    <span class="nav-link" onclick="showPage('products')">Products</span>
-                    <span class="nav-link" onclick="showPage('solutions')">Solutions</span>
-                    <span class="nav-link" onclick="showPage('how-it-works')">How it Works</span>
-                    <span class="nav-link" onclick="showPage('pricing')">Packages</span>
-                    <span class="nav-link" onclick="showPage('partners')">Partnerships</span>
-                </div>
-
-                <button onclick="showPage('inquire')" class="bg-[#0C4A6E] text-white px-6 py-2 rounded-full font-black text-[10px] uppercase tracking-widest hover:bg-green-500 transition">Inquire Now</button>
+    <nav class="fixed w-full z-[100] bg-white/95 backdrop-blur-md border-b">
+        <div class="max-w-[1400px] mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="showPage('home')">
+                <img src="https://i.ibb.co/B2ftrMpc/logo.png" class="h-8 w-auto" alt="Logo">
+                <div class="font-black text-xl uppercase text-navy italic">StudentHub<span class="accent-green">Solutions</span></div>
             </div>
+            
+            <div class="hidden xl:flex gap-8 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                <span class="nav-link" onclick="showPage('about')">About Us</span>
+                <span class="nav-link" onclick="showPage('products')">Products</span>
+                <span class="nav-link" onclick="showPage('how-it-works')">How it Works</span>
+                <span class="nav-link" onclick="showPage('partners')">Partnerships</span>
+            </div>
+
+            <button onclick="showPage('inquire')" class="bg-[#0C4A6E] text-white px-8 py-3 rounded-full font-black text-[10px] uppercase hover:bg-green-500 transition shadow-lg shadow-blue-900/10">Inquire Now</button>
         </div>
     </nav>
 
+    <div id="productOverlay" onclick="closeProduct()" class="fixed inset-0 bg-navy-blue/40 backdrop-blur-sm z-[110] hidden opacity-0 transition-opacity duration-300"></div>
+    <div id="productPanel" class="fixed top-0 right-0 h-full w-full md:w-[450px] bg-white z-[120] shadow-2xl p-12 overflow-y-auto">
+        <button onclick="closeProduct()" class="text-slate-300 hover:text-red-500 font-bold text-xs uppercase mb-10">← Back to Services</button>
+        <div id="productContent"></div>
+    </div>
+
     <main class="pt-20">
         <section id="home" class="content-section active">
-            <div class="navy-blue py-32 text-white px-6">
-                <div class="max-w-7xl mx-auto text-center animate__animated animate__fadeInUp">
-                    <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter mb-6">Connecting Students,<br><span class="accent-green italic">Simplifying Campus Life.</span></h1>
-                    <p class="text-blue-100/60 text-lg max-w-2xl mx-auto mb-10">The leading website development company for educational institutions.</p>
-                    <div class="flex justify-center gap-4">
-                        <button onclick="showPage('products')" class="bg-green-500 px-8 py-4 rounded-full font-black text-xs uppercase">Explore Products</button>
-                        <button onclick="showPage('solutions')" class="border border-white/20 px-8 py-4 rounded-full font-black text-xs uppercase">Our Methodology</button>
+            <div class="navy-blue py-40 text-white px-6">
+                <div class="max-w-7xl mx-auto text-center">
+                    <span class="text-green-400 font-black tracking-widest uppercase text-xs mb-4 block">Official Business Concept</span>
+                    <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter leading-none mb-8">Connecting Students,<br><span class="accent-green italic">Simplifying Campus Life.</span></h1>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <button onclick="showPage('inquire')" class="bg-green-500 text-white px-10 py-5 rounded-full font-black text-xs uppercase">Request a Proposal</button>
+                        <button onclick="showPage('products')" class="bg-white/10 hover:bg-white/20 px-10 py-5 rounded-full font-black text-xs uppercase border border-white/20">View System Modules</button>
                     </div>
-                </div>
-            </div>
-            
-            <div class="max-w-7xl mx-auto py-24 px-6 grid md:grid-cols-3 gap-12 text-center">
-                <div>
-                    <div class="text-4xl mb-4">🏛️</div>
-                    <h3 class="font-black text-navy uppercase italic">12+ Schools</h3>
-                    <p class="text-slate-400 text-xs font-bold uppercase">Partner Institutions</p>
-                </div>
-                <div>
-                    <div class="text-4xl mb-4">👥</div>
-                    <h3 class="font-black text-navy uppercase italic">50,000+</h3>
-                    <p class="text-slate-400 text-xs font-bold uppercase">Active Students</p>
-                </div>
-                <div>
-                    <div class="text-4xl mb-4">🚀</div>
-                    <h3 class="font-black text-navy uppercase italic">99.9%</h3>
-                    <p class="text-slate-400 text-xs font-bold uppercase">System Uptime</p>
                 </div>
             </div>
         </section>
 
-        <section id="about" class="content-section py-24 px-6">
-            <div class="max-w-5xl mx-auto">
-                <h2 class="text-4xl font-black text-navy uppercase italic mb-12">About StudentHub Solutions</h2>
-                <div class="grid md:grid-cols-2 gap-12">
+        <section id="about" class="content-section py-32 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid lg:grid-cols-2 gap-20 mb-32 items-center">
                     <div class="space-y-6">
-                        <p class="text-slate-600 leading-relaxed">Dedicated to helping schools enhance their digital services through accessible and user-friendly online platforms. We specialize in creating school-based websites that support student needs, campus services, and academic communities.</p>
-                        <div class="bg-white p-8 rounded-3xl shadow-sm border-l-4 border-green-400">
-                            <h4 class="font-black text-navy text-xs uppercase mb-2">Our Mission</h4>
-                            <p class="text-sm text-slate-500">To assist educational institutions in improving communication, efficiency, and convenience.</p>
+                        <h2 class="text-5xl font-black text-navy uppercase italic">Our Story<span class="accent-green">.</span></h2>
+                        <p class="text-slate-600 text-lg leading-relaxed">StudentHub Solutions is a dedicated website development company helping schools enhance digital services. We solve the <b>organizational problem</b> of unorganized student commerce and fragmented campus communication.</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white p-8 rounded-3xl shadow-sm"><h4 class="font-black text-navy text-2xl">100%</h4><p class="text-[10px] uppercase font-bold text-slate-400">Secure Database</p></div>
+                        <div class="bg-white p-8 rounded-3xl shadow-sm"><h4 class="font-black text-navy text-2xl">Verified</h4><p class="text-[10px] uppercase font-bold text-slate-400">P2P Marketplace</p></div>
+                    </div>
+                </div>
+
+                <h3 class="text-center text-xs font-black uppercase tracking-[0.4em] text-slate-400 mb-12">Executive Leadership</h3>
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+                    <div class="exec-card bg-white p-8 rounded-[2.5rem] border-2 border-slate-50 text-center">
+                        <div class="w-20 h-20 bg-slate-100 rounded-2xl mx-auto mb-6 flex items-center justify-center text-3xl">👤</div>
+                        <h4 class="font-extrabold text-navy uppercase text-sm leading-tight">LARA<br>BONGBONG</h4>
+                        <p class="text-green-500 font-bold text-[9px] uppercase mt-2 tracking-widest italic">LEAD EXECUTIVE</p>
+                    </div>
+                    <div class="exec-card bg-white p-8 rounded-[2.5rem] border-2 border-slate-50 text-center">
+                        <div class="w-20 h-20 bg-slate-100 rounded-2xl mx-auto mb-6 flex items-center justify-center text-3xl">👤</div>
+                        <h4 class="font-extrabold text-navy uppercase text-sm leading-tight">KYLA NICOLE<br>DIMPASO</h4>
+                        <p class="text-green-500 font-bold text-[9px] uppercase mt-2 tracking-widest italic">OPERATIONS</p>
+                    </div>
+                    <div class="exec-card bg-white p-8 rounded-[2.5rem] border-2 border-slate-50 text-center">
+                        <div class="w-20 h-20 bg-slate-100 rounded-2xl mx-auto mb-6 flex items-center justify-center text-3xl">👤</div>
+                        <h4 class="font-extrabold text-navy uppercase text-sm leading-tight">CHRISTINE DIANE<br>PANERIO</h4>
+                        <p class="text-green-500 font-bold text-[9px] uppercase mt-2 tracking-widest italic">STRATEGY</p>
+                    </div>
+                    <div class="exec-card bg-white p-8 rounded-[2.5rem] border-2 border-slate-50 text-center">
+                        <div class="w-20 h-20 bg-slate-100 rounded-2xl mx-auto mb-6 flex items-center justify-center text-3xl">👤</div>
+                        <h4 class="font-extrabold text-navy uppercase text-sm leading-tight">CLARK<br>SASIL</h4>
+                        <p class="text-green-500 font-bold text-[9px] uppercase mt-2 tracking-widest italic">TECHNICAL</p>
+                    </div>
+                    <div class="exec-card bg-white p-8 rounded-[2.5rem] border-2 border-slate-50 text-center">
+                        <div class="w-20 h-20 bg-slate-100 rounded-2xl mx-auto mb-6 flex items-center justify-center text-3xl">👤</div>
+                        <h4 class="font-extrabold text-navy uppercase text-sm leading-tight">BRETHNEY KATE<br>TAÑOLA</h4>
+                        <p class="text-green-500 font-bold text-[9px] uppercase mt-2 tracking-widest italic">COMMUNICATIONS</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="products" class="content-section py-32 px-6 bg-slate-100">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-20">
+                    <h2 class="text-4xl font-black text-navy uppercase italic">Product Solutions</h2>
+                    <p class="text-slate-400 font-bold text-[10px] uppercase tracking-widest mt-2">Click any module to see detailed features</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div onclick="openProduct('Marketplace')" class="bg-white p-10 rounded-[3rem] shadow-sm hover:shadow-xl transition cursor-pointer border border-transparent hover:border-green-400 group">
+                        <div class="text-3xl mb-6 group-hover:scale-110 transition">🛒</div>
+                        <h3 class="font-black text-navy uppercase mb-2">Campus Marketplace</h3>
+                        <p class="text-xs text-slate-500">Secure P2P trade system for students...</p>
+                        <p class="text-[9px] font-black text-green-500 uppercase mt-6">Learn More +</p>
+                    </div>
+                    <div onclick="openProduct('University')" class="bg-white p-10 rounded-[3rem] shadow-sm hover:shadow-xl transition cursor-pointer border border-transparent hover:border-green-400 group">
+                        <div class="text-3xl mb-6 group-hover:scale-110 transition">🏛️</div>
+                        <h3 class="font-black text-navy uppercase mb-2">University Development</h3>
+                        <p class="text-xs text-slate-500">Customized institutional portal design...</p>
+                        <p class="text-[9px] font-black text-green-500 uppercase mt-6">Learn More +</p>
+                    </div>
+                    <div onclick="openProduct('Security')" class="bg-white p-10 rounded-[3rem] shadow-sm hover:shadow-xl transition cursor-pointer border border-transparent hover:border-green-400 group">
+                        <div class="text-3xl mb-6 group-hover:scale-110 transition">🛡️</div>
+                        <h3 class="font-black text-navy uppercase mb-2">Security Lab</h3>
+                        <p class="text-xs text-slate-500">Enterprise data protection & integration...</p>
+                        <p class="text-[9px] font-black text-green-500 uppercase mt-6">Learn More +</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="content-section py-32 px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-black text-navy uppercase italic mb-16 text-center">Our Development Process</h2>
+                <div class="space-y-12">
+                    <div class="flex gap-8 items-start">
+                        <div class="bg-navy-blue text-white w-12 h-12 rounded-full flex items-center justify-center font-black flex-shrink-0">1</div>
+                        <div><h4 class="font-black text-navy uppercase">Consultation</h4><p class="text-sm text-slate-500">We meet with school admin to identify specific digital gaps.</p></div>
+                    </div>
+                    <div class="flex gap-8 items-start">
+                        <div class="bg-navy-blue text-white w-12 h-12 rounded-full flex items-center justify-center font-black flex-shrink-0">2</div>
+                        <div><h4 class="font-black text-navy uppercase">Platform Design</h4><p class="text-sm text-slate-500">We create a UI/UX blueprint that reflects the school's brand and student needs.</p></div>
+                    </div>
+                    <div class="flex gap-8 items-start">
+                        <div class="bg-navy-blue text-white w-12 h-12 rounded-full flex items-center justify-center font-black flex-shrink-0">3</div>
+                        <div><h4 class="font-black text-navy uppercase">Deployment & Testing</h4><p class="text-sm text-slate-500">Rigorous security testing before the system goes live for the students.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="partners" class="content-section py-32 bg-navy-blue text-white px-6">
+            <div class="max-w-7xl mx-auto text-center">
+                <h2 class="text-4xl font-black uppercase italic mb-12">Strategic Partners</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 opacity-60">
+                    <div class="p-10 border border-white/10 rounded-3xl font-black italic">EDU-TECH COLLAB</div>
+                    <div class="p-10 border border-white/10 rounded-3xl font-black italic">GOV STARTUP</div>
+                    <div class="p-10 border border-white/10 rounded-3xl font-black italic">DEV COMMUNITIES</div>
+                    <div class="p-10 border border-white/10 rounded-3xl font-black italic">CTU-APS HUB</div>
+                </div>
+                <p class="mt-12 text-blue-200 text-sm italic">Collaborating for a more connected campus ecosystem.</p>
+            </div>
+        </section>
+
+        <section id="inquire" class="content-section py-32 px-6">
+            <div class="max-w-3xl mx-auto bg-white p-16 rounded-[4rem] shadow-2xl border border-slate-100">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-black text-navy uppercase italic">Initiate Inquiry</h2>
+                    <p class="text-slate-400 text-[10px] font-bold uppercase mt-2">Request Consultation • Schedule Demo • Request Proposal</p>
+                </div>
+                <form class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-[9px] font-black uppercase text-slate-400">School Name</label>
+                            <input type="text" class="w-full p-4 bg-slate-50 rounded-xl outline-none focus:ring-2 ring-green-400 transition" required>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-[9px] font-black uppercase text-slate-400">Contact Person</label>
+                            <input type="text" class="w-full p-4 bg-slate-50 rounded-xl outline-none focus:ring-2 ring-green-400 transition" required>
                         </div>
                     </div>
-                    <div class="bg-navy-blue rounded-[3rem] p-10 text-white">
-                        <h4 class="font-black text-green-400 text-xs uppercase mb-6 tracking-widest">The Executives</h4>
-                        <ul class="space-y-4 font-bold text-sm">
-                            <li class="flex justify-between border-b border-white/10 pb-2">Lara Bongbong <span class="text-green-400 text-[10px]">Lead</span></li>
-                            <li class="flex justify-between border-b border-white/10 pb-2">Kyla Nicole Dimpaso <span class="text-green-400 text-[10px]">Operations</span></li>
-                            <li class="flex justify-between border-b border-white/10 pb-2">Christine Diane Panerio <span class="text-green-400 text-[10px]">Strategy</span></li>
-                            <li class="flex justify-between border-b border-white/10 pb-2">Clark Sasil <span class="text-green-400 text-[10px]">Technical</span></li>
-                            <li class="flex justify-between border-b border-white/10 pb-2">Brethney Kate Tañola <span class="text-green-400 text-[10px]">Comms</span></li>
-                        </ul>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-[9px] font-black uppercase text-slate-400">Email Address</label>
+                            <input type="email" class="w-full p-4 bg-slate-50 rounded-xl outline-none focus:ring-2 ring-green-400 transition" required>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-[9px] font-black uppercase text-slate-400">Estimated Students</label>
+                            <input type="number" class="w-full p-4 bg-slate-50 rounded-xl outline-none focus:ring-2 ring-green-400 transition" placeholder="e.g. 5000">
+                        </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="products" class="content-section py-24 px-6">
-            <div class="max-w-7xl mx-auto">
-                <h2 class="text-4xl font-black text-navy uppercase italic mb-12 text-center">System Portfolio</h2>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="bg-white p-8 rounded-3xl border hover:border-green-400 transition cursor-pointer">
-                        <h3 class="font-black text-navy uppercase text-sm mb-4">Custom University Web Development</h3>
-                        <p class="text-slate-500 text-xs leading-relaxed mb-6">Fully integrated institutional websites with dynamic CMS and faculty modules.</p>
-                        <button class="text-green-500 font-bold text-[10px] uppercase">View Screenshots →</button>
+                    <div class="space-y-2">
+                        <label class="text-[9px] font-black uppercase text-slate-400">Services Needed</label>
+                        <select class="w-full p-4 bg-slate-50 rounded-xl outline-none focus:ring-2 ring-green-400 transition font-bold text-navy">
+                            <option>University Web Development</option>
+                            <option>Campus Marketplace Integration</option>
+                            <option>Full Digital Ecosystem</option>
+                        </select>
                     </div>
-                    <div class="bg-white p-8 rounded-3xl border hover:border-green-400 transition cursor-pointer">
-                        <h3 class="font-black text-navy uppercase text-sm mb-4">Campus Marketplace System</h3>
-                        <p class="text-slate-500 text-xs leading-relaxed mb-6">A verified P2P system allowing students to safely trade school-related items.</p>
-                        <button class="text-green-500 font-bold text-[10px] uppercase">Verified P2P Setup →</button>
-                    </div>
-                    <div class="bg-white p-8 rounded-3xl border hover:border-green-400 transition cursor-pointer">
-                        <h3 class="font-black text-navy uppercase text-sm mb-4">Organization Management Module</h3>
-                        <p class="text-slate-500 text-xs leading-relaxed mb-6">Tools for student clubs to manage members, funds, and event logistics.</p>
-                        <button class="text-green-500 font-bold text-[10px] uppercase">Request Demo →</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="solutions" class="content-section py-24 bg-slate-100 px-6">
-            <div class="max-w-5xl mx-auto">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-black text-navy uppercase italic">Hyper-Localized Integration</h2>
-                    <p class="text-slate-500 mt-4">Solving the lack of centralized digital platforms for students.</p>
-                </div>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="bg-white p-10 rounded-[3rem] shadow-sm">
-                        <h4 class="font-black text-red-500 text-xs uppercase mb-4">The Problem</h4>
-                        <p class="text-sm text-slate-600">Students rely on unorganized social media groups for essential campus commerce and news, leading to scams and misinformation.</p>
-                    </div>
-                    <div class="bg-white p-10 rounded-[3rem] shadow-sm border-t-8 border-green-400">
-                        <h4 class="font-black text-green-500 text-xs uppercase mb-4">The StudentHub Solution</h4>
-                        <p class="text-sm text-slate-600">A verified, school-sanctioned ecosystem that connects to existing student databases for 100% trust.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="pricing" class="content-section py-24 px-6">
-            <div class="max-w-7xl mx-auto">
-                <h2 class="text-4xl font-black text-navy uppercase italic mb-16 text-center">Development Packages</h2>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-white p-10 rounded-3xl border text-center">
-                        <h3 class="font-black uppercase italic">Basic</h3>
-                        <p class="text-4xl font-black text-navy my-6">$25<span class="text-xs text-slate-400">/mo</span></p>
-                        <ul class="text-xs text-slate-500 space-y-4 mb-8">
-                            <li>Core Campus Website</li>
-                            <li>Announcement Portal</li>
-                            <li>Email Support</li>
-                        </ul>
-                        <button class="w-full py-4 rounded-xl border-2 border-navy text-navy font-black text-xs uppercase">Select Basic</button>
-                    </div>
-                    <div class="bg-white p-10 rounded-3xl border-4 border-green-400 text-center scale-105 shadow-xl">
-                        <h3 class="font-black uppercase italic">Standard</h3>
-                        <p class="text-4xl font-black text-navy my-6">$35<span class="text-xs text-slate-400">/mo</span></p>
-                        <ul class="text-xs text-slate-500 space-y-4 mb-8">
-                            <li>Marketplace Integration</li>
-                            <li>Organization Systems</li>
-                            <li>Priority Support</li>
-                        </ul>
-                        <button class="w-full py-4 rounded-xl bg-green-500 text-white font-black text-xs uppercase">Select Standard</button>
-                    </div>
-                    <div class="bg-white p-10 rounded-3xl border text-center">
-                        <h3 class="font-black uppercase italic">Premium</h3>
-                        <p class="text-4xl font-black text-navy my-6">$45<span class="text-xs text-slate-400">/mo</span></p>
-                        <ul class="text-xs text-slate-500 space-y-4 mb-8">
-                            <li>Full Campus Ecosystem</li>
-                            <li>Admin Analytics Dash</li>
-                            <li>24/7 Phone Support</li>
-                        </ul>
-                        <button class="w-full py-4 rounded-xl border-2 border-navy text-navy font-black text-xs uppercase">Select Premium</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="inquire" class="content-section py-24 px-6 bg-navy-blue text-white">
-            <div class="max-w-3xl mx-auto bg-white text-navy p-12 rounded-[4rem]">
-                <h2 class="text-3xl font-black uppercase italic mb-8">Request a Proposal</h2>
-                <form class="space-y-4">
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <input type="text" placeholder="School Name" class="w-full p-4 bg-slate-50 rounded-xl outline-none border focus:border-green-400 transition">
-                        <input type="number" placeholder="No. of Students" class="w-full p-4 bg-slate-50 rounded-xl outline-none border focus:border-green-400 transition">
-                    </div>
-                    <input type="email" placeholder="Official Institution Email" class="w-full p-4 bg-slate-50 rounded-xl outline-none border focus:border-green-400 transition">
-                    <select class="w-full p-4 bg-slate-50 rounded-xl outline-none border focus:border-green-400 transition">
-                        <option>Select Primary System Needed</option>
-                        <option>University Website</option>
-                        <option>Campus Marketplace</option>
-                        <option>Student Hub Portal</option>
-                    </select>
-                    <textarea placeholder="Specific requirements or pain points..." class="w-full p-4 bg-slate-50 rounded-xl outline-none border focus:border-green-400 transition h-32"></textarea>
-                    <button type="button" onclick="alert('Proposal Request Received.')" class="w-full bg-green-500 text-white py-5 rounded-2xl font-black uppercase tracking-widest shadow-xl">Submit Inquire</button>
+                    <button type="button" onclick="alert('Proposal Request Logged.')" class="w-full bg-[#0C4A6E] text-white py-6 rounded-2xl font-black uppercase tracking-widest hover:bg-green-500 shadow-xl transition-all">Submit Lead Request</button>
                 </form>
             </div>
         </section>
     </main>
 
-    <footer class="bg-white border-t py-16 px-6">
-        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12 mb-12">
-            <div>
-                <h4 class="font-black text-navy uppercase text-[10px] mb-6">Company</h4>
-                <ul class="text-xs text-slate-400 space-y-3">
-                    <li class="nav-link" onclick="showPage('about')">About Us</li>
-                    <li>Careers</li>
-                    <li>Blog</li>
-                </ul>
+    <footer class="bg-white border-t py-20 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="font-black text-sm uppercase text-navy italic mb-8">StudentHub<span class="accent-green">Solutions</span></div>
+            <div class="flex justify-center gap-10 text-[10px] font-black uppercase text-slate-400 mb-10">
+                <span onclick="showPage('about')" class="cursor-pointer hover:text-navy">About</span>
+                <span onclick="showPage('products')" class="cursor-pointer hover:text-navy">Services</span>
+                <span onclick="showPage('inquire')" class="cursor-pointer hover:text-navy">Contact</span>
             </div>
-            <div>
-                <h4 class="font-black text-navy uppercase text-[10px] mb-6">Solutions</h4>
-                <ul class="text-xs text-slate-400 space-y-3">
-                    <li class="nav-link" onclick="showPage('products')">Marketplace</li>
-                    <li class="nav-link" onclick="showPage('products')">Student Portals</li>
-                    <li>Cybersecurity</li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-black text-navy uppercase text-[10px] mb-6">Support</h4>
-                <ul class="text-xs text-slate-400 space-y-3">
-                    <li>Technical Support</li>
-                    <li>System Maintenance</li>
-                    <li>Contact Us</li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-black text-navy uppercase text-[10px] mb-6">Social</h4>
-                <ul class="text-xs text-slate-400 space-y-3">
-                    <li>LinkedIn</li>
-                    <li>Facebook</li>
-                    <li>X (Twitter)</li>
-                </ul>
-            </div>
-        </div>
-        <div class="text-center pt-12 border-t text-[10px] font-bold text-slate-300 uppercase tracking-[0.4em]">
-            &copy; 2026 StudentHub Solutions | All Rights Reserved
+            <p class="text-[9px] font-bold text-slate-300 uppercase tracking-widest">&copy; 2026 StudentHub Solutions | All Rights Reserved</p>
         </div>
     </footer>
 
     <script>
-        // SPA NAVIGATION LOGIC
-        function showPage(pageId) {
-            // Hide all sections
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            // Show requested section
-            document.getElementById(pageId).classList.add('active');
-            // Scroll to top
+        // PAGE NAVIGATION
+        function showPage(id) {
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
             window.scrollTo(0,0);
         }
 
-        // AUTO-ANIMATE ON SCROLL (Simple version)
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) nav.classList.add('shadow-md');
-            else nav.classList.remove('shadow-md');
-        });
+        // PRODUCT DETAIL ENGINE
+        const productData = {
+            'Marketplace': {
+                title: 'Campus Marketplace',
+                desc: 'A hyper-localized trading hub built for safety.',
+                features: ['Verified student logins', 'Textbook & Uniform exchange', 'In-app safe-zone meeting tags', 'Admin escrow monitoring'],
+                img: 'https://images.unsplash.com/photo-1556742049-04ff4361e2b6?w=600'
+            },
+            'University': {
+                title: 'University Development',
+                desc: 'Premium institutional web architecture.',
+                features: ['Dynamic CMS for departments', 'Faculty directory systems', 'Secure student portals', 'Real-time school announcements'],
+                img: 'https://images.unsplash.com/photo-1562774053-701939374585?w=600'
+            },
+            'Security': {
+                title: 'Security Lab',
+                desc: 'Enterprise-grade data protection.',
+                features: ['Student database encryption', '2FA authentication', 'Cyber-incident response plan', 'Regular security audits'],
+                img: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600'
+            }
+        };
+
+        function openProduct(type) {
+            const data = productData[type];
+            const html = `
+                <img src="${data.img}" class="w-full h-48 object-cover rounded-3xl mb-8 shadow-lg">
+                <h2 class="text-3xl font-black text-navy uppercase italic mb-4">${data.title}</h2>
+                <p class="text-slate-500 mb-8 leading-relaxed">${data.desc}</p>
+                <h4 class="text-[10px] font-black uppercase text-green-500 mb-4 tracking-widest">Key Components</h4>
+                <ul class="space-y-4">
+                    ${data.features.map(f => `<li class="text-sm font-bold text-navy flex gap-3"><span>✓</span> ${f}</li>`).join('')}
+                </ul>
+                <button onclick="showPage('inquire'); closeProduct();" class="w-full mt-12 bg-navy-blue text-white py-5 rounded-2xl font-black uppercase text-xs">Request a Demo</button>
+            `;
+            document.getElementById('productContent').innerHTML = html;
+            document.getElementById('productPanel').classList.add('open');
+            document.getElementById('productOverlay').classList.remove('hidden');
+            setTimeout(() => document.getElementById('productOverlay').style.opacity = '1', 50);
+        }
+
+        function closeProduct() {
+            document.getElementById('productPanel').classList.remove('open');
+            document.getElementById('productOverlay').style.opacity = '0';
+            setTimeout(() => document.getElementById('productOverlay').classList.add('hidden'), 300);
+        }
     </script>
 </body>
 </html>
