@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudentHub Solutions | Connecting Students, Simplifying Campus Life</title>
+    <title>StudentHub Solutions | Interactive Portal</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
@@ -11,154 +11,145 @@
         .navy-blue { background-color: #0C4A6E; }
         .text-navy { color: #0C4A6E; }
         .accent-green { color: #4ADE80; }
-        .bg-mint { background-color: #4ADE80; }
+        
+        /* Modal Animation */
+        .modal { transition: opacity 0.25s ease; }
+        body.modal-active { overflow: hidden; }
     </style>
 </head>
-<body class="bg-white text-slate-900">
+<body class="bg-slate-50 text-slate-900">
 
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b">
+    <nav class="fixed w-full z-50 bg-white/95 border-b shadow-sm">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-3">
                 <img src="https://i.ibb.co/B2ftrMpc/logo.png" class="h-8 w-auto" alt="Logo">
                 <div class="font-black text-xl tracking-tighter uppercase text-navy italic">StudentHub<span class="accent-green">Solutions</span></div>
             </div>
             <div class="hidden md:flex gap-8 text-[11px] font-bold uppercase tracking-widest">
-                <a href="#about" class="hover:text-green-500">About Us</a>
-                <a href="#services" class="hover:text-green-500">Services</a>
-                <a href="#pricing" class="hover:text-green-500">Plans</a>
-                <a href="#team" class="hover:text-green-500">Our Group</a>
-                <a href="#contact" class="bg-[#0C4A6E] text-white px-5 py-2 rounded-full hover:bg-green-500 transition">Inquire Now</a>
+                <a href="#about" class="hover:text-green-500 transition">Our Mission</a>
+                <a href="#solutions" class="hover:text-green-500 transition">Development</a>
+                <a href="#executives" class="hover:text-green-500 transition">Executives</a>
+                <button onclick="scrollToContact()" class="bg-[#0C4A6E] text-white px-6 py-2 rounded-full hover:bg-green-500 transition">Hire Our Team</button>
             </div>
         </div>
     </nav>
 
-    <section class="navy-blue pt-40 pb-32 text-white overflow-hidden relative">
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="max-w-3xl">
-                <span class="text-green-400 font-black tracking-widest uppercase text-xs">Connecting Students, Simplifying Campus Life</span>
-                <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter mt-4 leading-[0.9]">A Website <br><span class="accent-green italic">Development</span> Company.</h1>
-                <p class="text-blue-100/70 mt-8 text-lg max-w-xl leading-relaxed">Dedicated to helping schools enhance digital services through accessible, school-sanctioned ecosystems that solve unorganized campus commerce.</p>
-                <div class="flex gap-4 mt-10">
-                    <a href="#services" class="bg-green-500 text-white px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest">Our Solutions</a>
-                    <a href="https://studenthubsoln.com" class="border border-white/20 px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-white/10 transition">studenthubsoln.com</a>
-                </div>
+    <section class="navy-blue pt-40 pb-24 text-white">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter mb-6">Connecting Students,<br><span class="accent-green italic">Simplifying Campus Life.</span></h1>
+            <p class="text-blue-100/70 text-lg max-w-2xl mx-auto mb-10">We are a dedicated website development company helping institutions enhance digital services through custom-built platforms.</p>
+            <div class="flex justify-center gap-4">
+                <button onclick="document.getElementById('executives').scrollIntoView()" class="bg-green-500 text-white px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest shadow-lg shadow-green-500/20">Meet the Executives</button>
+                <button onclick="scrollToContact()" class="border border-white/20 px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-white/10 transition">Start Development</button>
             </div>
         </div>
     </section>
 
-    <section class="py-24 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-            <div>
-                <h2 class="text-3xl font-black text-navy uppercase italic">The Innovation Model</h2>
-                <p class="text-slate-500 mt-4 leading-relaxed italic">Bridging the gap between formal administration and informal student culture through a Hyper-Localized Integration Model.</p>
-            </div>
-            <div class="grid grid-cols-1 gap-4">
-                <div class="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-green-400">
-                    <h4 class="font-black text-navy text-sm uppercase">Trust-Based Ecosystem</h4>
-                    <p class="text-xs text-slate-500 mt-2">Eliminates anonymity risks by verifying marketplace users through internal school databases.</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-blue-400">
-                    <h4 class="font-black text-navy text-sm uppercase">Modular Scalability</h4>
-                    <p class="text-xs text-slate-500 mt-2">"Architecture-as-a-Service" allows schools to scale up tools without data migration issues.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="py-32 bg-white">
-        <div class="max-w-7xl mx-auto px-6 text-center mb-20">
-            <h2 class="text-4xl font-black text-navy uppercase italic">Products & Services</h2>
-            <p class="text-slate-400 mt-2 uppercase tracking-widest text-[10px] font-bold">Customizable Digital Platforms for Colleges</p>
-        </div>
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="p-8 rounded-3xl bg-slate-50 border group hover:border-green-500 transition">
-                <div class="w-12 h-12 bg-blue-100 rounded-xl mb-6 flex items-center justify-center text-xl group-hover:bg-green-500 group-hover:text-white">🎓</div>
-                <h3 class="font-black text-navy uppercase mb-3">University Development</h3>
-                <p class="text-sm text-slate-500">Customized university websites designed specifically for complex school environments.</p>
-            </div>
-            <div class="p-8 rounded-3xl bg-slate-50 border group hover:border-green-500 transition">
-                <div class="w-12 h-12 bg-blue-100 rounded-xl mb-6 flex items-center justify-center text-xl group-hover:bg-green-500 group-hover:text-white">🛒</div>
-                <h3 class="font-black text-navy uppercase mb-3">Campus Marketplace</h3>
-                <p class="text-sm text-slate-500">Verified P2P systems for students to trade textbooks, uniforms, and dorm essentials safely.</p>
-            </div>
-            <div class="p-8 rounded-3xl bg-slate-50 border group hover:border-green-500 transition">
-                <div class="w-12 h-12 bg-blue-100 rounded-xl mb-6 flex items-center justify-center text-xl group-hover:bg-green-500 group-hover:text-white">🛡️</div>
-                <h3 class="font-black text-navy uppercase mb-3">Security Integration</h3>
-                <p class="text-sm text-slate-500">Advanced cybersecurity, data protection, and system integration for administrative safety.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="pricing" class="py-32 bg-slate-900 text-white">
+    <section id="executives" class="py-32 bg-white">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-3xl font-black italic uppercase accent-green mb-16">Subscription Price List</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="p-10 rounded-3xl border border-slate-700 bg-slate-800">
-                    <h3 class="font-black text-xl uppercase italic">Basic Plan</h3>
-                    <p class="text-slate-400 text-[10px] uppercase font-bold mt-2">Core Features for Individuals</p>
-                    <div class="text-4xl font-black my-8">$25<span class="text-sm text-slate-500">/mo</span></div>
-                    <ul class="text-sm space-y-4 text-slate-300">
-                        <li>• Limited Transaction Volume</li>
-                        <li>• Email Support</li>
-                    </ul>
-                </div>
-                <div class="p-10 rounded-3xl border-2 border-green-500 bg-slate-800 relative">
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-green-500 text-white text-[9px] font-black px-4 py-1 rounded-full uppercase">Most Popular</div>
-                    <h3 class="font-black text-xl uppercase italic">Standard Plan</h3>
-                    <p class="text-slate-400 text-[10px] uppercase font-bold mt-2">Small Business Growth</p>
-                    <div class="text-4xl font-black my-8">$35<span class="text-sm text-slate-500">/mo</span></div>
-                    <ul class="text-sm space-y-4 text-slate-300">
-                        <li>• Moderate Transaction Volume</li>
-                        <li>• Priority Email & Chat Support</li>
-                    </ul>
-                </div>
-                <div class="p-10 rounded-3xl border border-slate-700 bg-slate-800">
-                    <h3 class="font-black text-xl uppercase italic">Premium Plan</h3>
-                    <p class="text-slate-400 text-[10px] uppercase font-bold mt-2">Advanced Functionalities</p>
-                    <div class="text-4xl font-black my-8">$45<span class="text-sm text-slate-500">/mo</span></div>
-                    <ul class="text-sm space-y-4 text-slate-300">
-                        <li>• High Transaction Volume</li>
-                        <li>• 24/7 Phone & Live Chat Support</li>
-                    </ul>
-                </div>
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black text-navy uppercase italic">The Executives</h2>
+                <p class="text-slate-400 mt-2 uppercase tracking-widest text-[10px] font-bold">Click a name to view professional credentials</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                <button onclick="openExecutive('Lara Bongbong', 'Lead Developer', 'Specializes in front-end architecture and localized campus integration systems.', 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400')" class="p-6 bg-slate-50 rounded-2xl border-2 border-transparent hover:border-green-400 hover:bg-white transition text-left group">
+                    <p class="font-black text-navy uppercase text-sm group-hover:text-green-600">Lara Bongbong</p>
+                    <p class="text-[9px] font-bold text-slate-400 uppercase mt-1">View Profile →</p>
+                </button>
+
+                <button onclick="openExecutive('Kyla Nicole Dimpaso', 'Operations Manager', 'Oversees organizational problem-solving and client communication strategies.', 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400')" class="p-6 bg-slate-50 rounded-2xl border-2 border-transparent hover:border-green-400 hover:bg-white transition text-left group">
+                    <p class="font-black text-navy uppercase text-sm group-hover:text-green-600">Kyla Nicole Dimpaso</p>
+                    <p class="text-[9px] font-bold text-slate-400 uppercase mt-1">View Profile →</p>
+                </button>
+
+                <button onclick="openExecutive('Christine Diane Panerio', 'Project Strategist', 'Focuses on user-friendly online platforms and academic community support.', 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400')" class="p-6 bg-slate-50 rounded-2xl border-2 border-transparent hover:border-green-400 hover:bg-white transition text-left group">
+                    <p class="font-black text-navy uppercase text-sm group-hover:text-green-600">Christine Panerio</p>
+                    <p class="text-[9px] font-bold text-slate-400 uppercase mt-1">View Profile →</p>
+                </button>
+
+                <button onclick="openExecutive('Clark Sasil', 'Technical Director', 'Manages backend security and modular scalability for institutional growth.', 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400')" class="p-6 bg-slate-50 rounded-2xl border-2 border-transparent hover:border-green-400 hover:bg-white transition text-left group">
+                    <p class="font-black text-navy uppercase text-sm group-hover:text-green-600">Clark Sasil</p>
+                    <p class="text-[9px] font-bold text-slate-400 uppercase mt-1">View Profile →</p>
+                </button>
+
+                <button onclick="openExecutive('Brethney Kate Tañola', 'Communications Head', 'Ensures seamless coordination between school administration and student needs.', 'https://images.unsplash.com/photo-1554151228-14d9def656e4?w=400')" class="p-6 bg-slate-50 rounded-2xl border-2 border-transparent hover:border-green-400 hover:bg-white transition text-left group">
+                    <p class="font-black text-navy uppercase text-sm group-hover:text-green-600">Brethney Tañola</p>
+                    <p class="text-[9px] font-bold text-slate-400 uppercase mt-1">View Profile →</p>
+                </button>
             </div>
         </div>
     </section>
 
-    <section id="team" class="py-32 bg-white">
+    <div id="execModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-6 bg-navy-blue/90 backdrop-blur-sm">
+        <div class="bg-white w-full max-w-lg rounded-[3rem] overflow-hidden shadow-2xl">
+            <div class="p-12 text-center">
+                <div class="w-32 h-32 bg-slate-200 rounded-full mx-auto mb-6 overflow-hidden border-4 border-green-400">
+                    <img id="modalImg" src="" class="w-full h-full object-cover">
+                </div>
+                <h3 id="modalName" class="text-3xl font-black text-navy uppercase italic">Name Here</h3>
+                <p id="modalTitle" class="text-green-500 font-bold uppercase tracking-widest text-xs mt-2">Title Here</p>
+                <div class="h-px bg-slate-100 my-8 w-1/2 mx-auto"></div>
+                <p id="modalBio" class="text-slate-500 text-sm leading-relaxed">Biography details go here based on the group concept document.</p>
+                <button onclick="closeExecutive()" class="mt-10 bg-slate-100 text-slate-400 px-8 py-3 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-red-50 hover:text-red-500 transition">Close Profile</button>
+            </div>
+        </div>
+    </div>
+
+    <section id="solutions" class="py-32 bg-slate-50">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row gap-12 items-center">
-                <div class="md:w-1/2">
-                    <img src="https://i.ibb.co/nMwbnJG6/642805409-2374987332964932-6853749201352027408-n.jpg" class="rounded-[3rem] shadow-2xl" alt="Team Photo">
+            <h2 class="text-4xl font-black text-navy mb-12">Custom Dev Services</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-12 rounded-[3rem] shadow-sm">
+                    <h3 class="text-xl font-black mb-4 uppercase italic">Phase 01: Consultation</h3>
+                    <p class="text-slate-500 text-sm">We analyze your institution's organizational problems and design a hyper-localized digital blueprint.</p>
                 </div>
-                <div class="md:w-1/2">
-                    <h2 class="text-4xl font-black text-navy uppercase italic mb-8">Executive Group 3</h2>
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="border-l-2 border-green-500 pl-4 py-2">
-                            <p class="font-black text-navy uppercase text-sm">Lara Bongbong</p>
-                        </div>
-                        <div class="border-l-2 border-green-500 pl-4 py-2">
-                            <p class="font-black text-navy uppercase text-sm">Kyla Nicole Dimpaso</p>
-                        </div>
-                        <div class="border-l-2 border-green-500 pl-4 py-2">
-                            <p class="font-black text-navy uppercase text-sm">Christine Diane Panerio</p>
-                        </div>
-                        <div class="border-l-2 border-green-500 pl-4 py-2">
-                            <p class="font-black text-navy uppercase text-sm">Clark Sasil</p>
-                        </div>
-                        <div class="border-l-2 border-green-500 pl-4 py-2">
-                            <p class="font-black text-navy uppercase text-sm">Brethney Kate Tañola</p>
-                        </div>
-                    </div>
+                <div class="bg-white p-12 rounded-[3rem] shadow-sm border-t-8 border-green-500">
+                    <h3 class="text-xl font-black mb-4 uppercase italic">Phase 02: Full Development</h3>
+                    <p class="text-slate-500 text-sm">Deployment of a centralized platform including Marketplace, Community Hubs, and Secure Database management.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-12 border-t text-center bg-slate-50">
-        <div class="font-black text-sm tracking-tighter uppercase text-navy mb-4">StudentHub<span class="accent-green">Solutions</span></div>
-        <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">&copy; 2026 StudentHub Solutions | All Rights Reserved.</p>
-    </footer>
+    <section id="contact" class="py-32 bg-white">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="bg-slate-900 text-white p-16 rounded-[4rem] relative overflow-hidden">
+                <div class="relative z-10 text-center">
+                    <h2 class="text-4xl font-black mb-8 italic">Start Your Project<span class="accent-green">.</span></h2>
+                    <form onsubmit="event.preventDefault(); alert('Proposal Sent Successfully!');" class="space-y-4 text-left">
+                        <input type="text" placeholder="Institution Name" class="w-full p-6 bg-slate-800 rounded-2xl outline-none focus:ring-2 ring-green-400 transition" required>
+                        <input type="email" placeholder="Official Email" class="w-full p-6 bg-slate-800 rounded-2xl outline-none focus:ring-2 ring-green-400 transition" required>
+                        <textarea placeholder="Describe your school's digital requirements..." class="w-full p-6 bg-slate-800 rounded-2xl outline-none focus:ring-2 ring-green-400 transition h-32" required></textarea>
+                        <button class="w-full bg-green-500 text-white py-6 rounded-2xl font-black uppercase tracking-widest hover:bg-white hover:text-navy transition shadow-2xl">Send Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <script>
+        // FUNCTIONAL: Executive Modal Logic
+        function openExecutive(name, title, bio, img) {
+            document.getElementById('modalName').innerText = name;
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalBio').innerText = bio;
+            document.getElementById('modalImg').src = img;
+            
+            const modal = document.getElementById('execModal');
+            modal.classList.remove('hidden');
+            document.body.classList.add('modal-active');
+        }
+
+        function closeExecutive() {
+            const modal = document.getElementById('execModal');
+            modal.classList.add('hidden');
+            document.body.classList.remove('modal-active');
+        }
+
+        function scrollToContact() {
+            document.getElementById('contact').scrollIntoView();
+        }
+    </script>
 </body>
 </html>
