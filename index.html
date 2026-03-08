@@ -15,9 +15,9 @@
         .content-section { display: none; }
         .content-section.active { display: block; animation: fadeIn 0.4s ease-in-out; }
         
-        /* High-Impact Executive Cards */
-        .exec-card { transition: all 0.4s ease; cursor: pointer; }
-        .exec-card:hover { transform: scale(1.05); }
+        /* Executive Card Design */
+        .exec-card { transition: all 0.4s ease; cursor: pointer; border: 2px solid transparent; }
+        .exec-card:hover { transform: scale(1.05); border-color: #4ADE80; background: #0c3e5c; }
 
         /* Dynamic Sidebar for Member Info */
         #memberPanel { transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); transform: translateX(100%); }
@@ -34,203 +34,193 @@
             </div>
             
             <div class="hidden lg:flex gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
-                <span class="cursor-pointer hover:text-green-500" onclick="showPage('about')">Executives</span>
-                <span class="cursor-pointer hover:text-green-500" onclick="showPage('products')">Features</span>
+                <span class="cursor-pointer hover:text-green-500" onclick="showPage('about')">The Executives</span>
+                <span class="cursor-pointer hover:text-green-500" onclick="showPage('products')">Expertise</span>
                 <span class="cursor-pointer hover:text-green-500" onclick="showPage('partners')">Partnerships</span>
             </div>
 
-            <button onclick="showPage('inquire')" class="bg-[#0C4A6E] text-white px-8 py-3 rounded-full font-black text-[10px] uppercase hover:bg-green-500 transition">Inquire Now</button>
+            <button onclick="showPage('inquire')" class="bg-[#0C4A6E] text-white px-8 py-3 rounded-full font-black text-[10px] uppercase hover:bg-green-500 transition shadow-lg">Inquire Now</button>
         </div>
     </nav>
 
-    <div id="memberOverlay" onclick="closeMember()" class="fixed inset-0 bg-navy-blue/60 backdrop-blur-sm z-[110] hidden"></div>
+    <div id="memberOverlay" onclick="closeMember()" class="fixed inset-0 bg-navy-blue/70 backdrop-blur-sm z-[110] hidden opacity-0 transition-opacity"></div>
     <div id="memberPanel" class="fixed top-0 right-0 h-full w-full md:w-[500px] bg-white z-[120] shadow-2xl p-12 overflow-y-auto">
-        <button onclick="closeMember()" class="text-slate-400 font-bold text-[10px] uppercase mb-10 tracking-widest hover:text-red-500">← Close Profile</button>
+        <button onclick="closeMember()" class="text-slate-400 font-black text-[10px] uppercase mb-10 tracking-widest hover:text-red-500">← Back to Team</button>
         <div id="memberContent"></div>
     </div>
 
     <main class="pt-20">
         <section id="home" class="content-section active">
             <div class="navy-blue py-48 text-white px-6">
-                <div class="max-w-5xl mx-auto text-center">
-                    <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter leading-none mb-8">Modernize Your <br><span class="accent-green italic">Campus Experience.</span></h1>
-                    <p class="text-blue-100/60 text-lg max-w-2xl mx-auto mb-12 italic font-light">Custom-built web infrastructure for the next generation of academic excellence.</p>
-                    <button onclick="showPage('about')" class="bg-green-500 px-12 py-5 rounded-full font-black text-xs uppercase shadow-2xl hover:bg-white hover:text-navy transition-all">Meet The Team</button>
+                <div class="max-w-5xl mx-auto text-center animate__animated animate__fadeIn">
+                    <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter leading-none mb-8 italic">Connecting Students,<br><span class="accent-green">Simplifying Campus.</span></h1>
+                    <p class="text-blue-100/60 text-lg max-w-2xl mx-auto mb-12 font-light">The premier web development firm for educational digital transformation.</p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <button onclick="showPage('inquire')" class="bg-green-500 px-12 py-5 rounded-full font-black text-xs uppercase shadow-2xl">Initiate Consultation</button>
+                        <button onclick="showPage('about')" class="bg-white/10 border border-white/20 px-12 py-5 rounded-full font-black text-xs uppercase hover:bg-white/20">The Leadership</button>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="about" class="content-section py-32 px-6">
             <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-20">
-                    <h2 class="text-5xl font-black text-navy uppercase italic mb-4">The Leadership Team</h2>
-                    <p class="text-slate-400 font-bold text-[10px] uppercase tracking-[0.4em]">Click a name to view professional credentials</p>
+                <div class="text-center mb-24">
+                    <h2 class="text-5xl font-black text-navy uppercase italic mb-4">Executive Leadership</h2>
+                    <p class="text-slate-400 font-bold text-[10px] uppercase tracking-[0.4em]">Expert Visionaries Behind the Tech</p>
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
-                    <div onclick="openMember('Lara')" class="exec-card p-10 rounded-[3.5rem] bg-navy-blue text-white text-center hover:bg-green-500 group transition-all">
-                        <div class="text-4xl mb-6">👤</div>
-                        <h4 class="font-black text-lg leading-tight uppercase tracking-tighter mb-2">LARA<br>BONGBONG</h4>
-                        <p class="text-green-400 group-hover:text-white font-black text-[9px] uppercase italic tracking-widest">Lead Executive</p>
+                    <div onclick="openMember('Lara')" class="exec-card p-8 rounded-[3.5rem] bg-navy-blue text-white text-center">
+                        <div class="w-24 h-24 rounded-[2rem] overflow-hidden mx-auto mb-6 border-2 border-green-500 shadow-lg">
+                            <img src="https://i.ibb.co/qYQMmtTr/Screenshot-2026-03-08-at-5-08-53-PM.png" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-black text-md leading-tight uppercase mb-2">LARA<br>BONGBONG</h4>
+                        <p class="text-green-400 font-black text-[8px] uppercase tracking-widest italic">Chief Executive</p>
                     </div>
 
-                    <div onclick="openMember('Kyla')" class="exec-card p-10 rounded-[3.5rem] bg-navy-blue text-white text-center hover:bg-green-500 group transition-all">
-                        <div class="text-4xl mb-6">👤</div>
-                        <h4 class="font-black text-lg leading-tight uppercase tracking-tighter mb-2">KYLA NICOLE<br>DIMPASO</h4>
-                        <p class="text-green-400 group-hover:text-white font-black text-[9px] uppercase italic tracking-widest">Operations</p>
+                    <div onclick="openMember('Kyla')" class="exec-card p-8 rounded-[3.5rem] bg-navy-blue text-white text-center">
+                        <div class="w-24 h-24 rounded-[2rem] overflow-hidden mx-auto mb-6 border-2 border-green-500 shadow-lg">
+                            <img src="https://i.ibb.co/pN9JTTn/Screenshot-2026-03-08-at-5-09-04-PM.png" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-black text-md leading-tight uppercase mb-2">KYLA NICOLE<br>DIMPASO</h4>
+                        <p class="text-green-400 font-black text-[8px] uppercase tracking-widest italic">Operations</p>
                     </div>
 
-                    <div onclick="openMember('Christine')" class="exec-card p-10 rounded-[3.5rem] bg-navy-blue text-white text-center hover:bg-green-500 group transition-all">
-                        <div class="text-4xl mb-6">👤</div>
-                        <h4 class="font-black text-lg leading-tight uppercase tracking-tighter mb-2">CHRISTINE DIANE<br>PANERIO</h4>
-                        <p class="text-green-400 group-hover:text-white font-black text-[9px] uppercase italic tracking-widest">Project Strategy</p>
+                    <div onclick="openMember('Christine')" class="exec-card p-8 rounded-[3.5rem] bg-navy-blue text-white text-center">
+                        <div class="w-24 h-24 rounded-[2rem] overflow-hidden mx-auto mb-6 border-2 border-green-500 shadow-lg">
+                            <img src="https://i.ibb.co/kVN1DVPg/Screenshot-2026-03-08-at-5-09-17-PM.png" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-black text-md leading-tight uppercase mb-2">CHRISTINE DIANE<br>PANERIO</h4>
+                        <p class="text-green-400 font-black text-[8px] uppercase tracking-widest italic">Project Strategy</p>
                     </div>
 
-                    <div onclick="openMember('Clark')" class="exec-card p-10 rounded-[3.5rem] bg-navy-blue text-white text-center hover:bg-green-500 group transition-all">
-                        <div class="text-4xl mb-6">👤</div>
-                        <h4 class="font-black text-lg leading-tight uppercase tracking-tighter mb-2">CLARK<br>SASIL</h4>
-                        <p class="text-green-400 group-hover:text-white font-black text-[9px] uppercase italic tracking-widest">Technical Director</p>
+                    <div onclick="openMember('Clark')" class="exec-card p-8 rounded-[3.5rem] bg-navy-blue text-white text-center">
+                        <div class="w-24 h-24 rounded-[2rem] overflow-hidden mx-auto mb-6 border-2 border-green-500 shadow-lg">
+                            <img src="https://i.ibb.co/6JHNftgj/Screenshot-2026-03-08-at-5-09-31-PM.png" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-black text-md leading-tight uppercase mb-2">CLARK<br>SASIL</h4>
+                        <p class="text-green-400 font-black text-[8px] uppercase tracking-widest italic">Technical Director</p>
                     </div>
 
-                    <div onclick="openMember('Brethney')" class="exec-card p-10 rounded-[3.5rem] bg-navy-blue text-white text-center hover:bg-green-500 group transition-all">
-                        <div class="text-4xl mb-6">👤</div>
-                        <h4 class="font-black text-lg leading-tight uppercase tracking-tighter mb-2">BRETHNEY KATE<br>TAÑOLA</h4>
-                        <p class="text-green-400 group-hover:text-white font-black text-[9px] uppercase italic tracking-widest">Communications</p>
+                    <div onclick="openMember('Brethney')" class="exec-card p-8 rounded-[3.5rem] bg-navy-blue text-white text-center">
+                        <div class="w-24 h-24 rounded-[2rem] overflow-hidden mx-auto mb-6 border-2 border-green-500 shadow-lg">
+                            <img src="https://i.ibb.co/vCYZgTCv/Screenshot-2026-03-08-at-5-09-39-PM.png" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-black text-md leading-tight uppercase mb-2">BRETHNEY KATE<br>TAÑOLA</h4>
+                        <p class="text-green-400 font-black text-[8px] uppercase tracking-widest italic">Communications</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="products" class="content-section py-32 bg-slate-100 px-6">
+        <section id="partners" class="content-section py-32 bg-slate-100 px-6">
             <div class="max-w-7xl mx-auto">
-                <h2 class="text-4xl font-black text-navy uppercase italic mb-16 text-center">Engineered System Features</h2>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-white p-12 rounded-[3rem] border-b-8 border-navy-blue">
-                        <h3 class="text-xl font-black text-navy mb-4 uppercase">Modular CMS</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed italic">Self-managing content blocks that allow school staff to update news, events, and bulletins without coding knowledge.</p>
-                    </div>
-                    <div class="bg-white p-12 rounded-[3rem] border-b-8 border-green-500">
-                        <h3 class="text-xl font-black text-navy mb-4 uppercase">Identity Vault</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed italic">Hyper-secure database integration ensuring that only verified institutional members can access internal modules.</p>
-                    </div>
-                    <div class="bg-white p-12 rounded-[3rem] border-b-8 border-navy-blue">
-                        <h3 class="text-xl font-black text-navy mb-4 uppercase">Adaptive UI</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed italic">Liquid layout architecture that ensures your campus portal looks and performs perfectly on mobile, tablet, or desktop.</p>
-                    </div>
+                <div class="text-center mb-20">
+                    <h2 class="text-4xl font-black text-navy uppercase italic">Global Ecosystem</h2>
+                    <p class="text-slate-400 font-bold text-[10px] uppercase tracking-widest mt-2">Verified Professional Alliances</p>
                 </div>
-            </div>
-        </section>
-
-        <section id="partners" class="content-section py-32 bg-navy-blue px-6">
-            <div class="max-w-7xl mx-auto text-center">
-                <h2 class="text-4xl font-black text-white uppercase italic mb-16">Global Ecosystem Partners</h2>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="p-10 bg-white rounded-[2.5rem] shadow-xl">
-                        <h4 class="font-black text-navy uppercase text-xs mb-3 tracking-widest">Academic Alliances</h4>
-                        <p class="text-slate-500 text-[11px] leading-relaxed font-bold italic">Collaborating with CTU and local institutions for real-world testing.</p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white p-12 rounded-[3.5rem] shadow-sm border-t-8 border-navy-blue text-center">
+                        <h4 class="font-black text-navy uppercase text-xs mb-4">Academic Partners</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed italic">Strategic collaboration with Cebu-based institutions for pilot-testing new campus modules.</p>
                     </div>
-                    <div class="p-10 bg-white rounded-[2.5rem] shadow-xl">
-                        <h4 class="font-black text-navy uppercase text-xs mb-3 tracking-widest">Infrastructure</h4>
-                        <p class="text-slate-500 text-[11px] leading-relaxed font-bold italic">Cloud-hosting partners ensuring enterprise-grade speed and reliability.</p>
+                    <div class="bg-white p-12 rounded-[3.5rem] shadow-sm border-t-8 border-green-400 text-center">
+                        <h4 class="font-black text-navy uppercase text-xs mb-4">Cloud Support</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed italic">Partnership with global hosting giants to ensure institutional portals stay online 24/7.</p>
                     </div>
-                    <div class="p-10 bg-white rounded-[2.5rem] shadow-xl">
-                        <h4 class="font-black text-navy uppercase text-xs mb-3 tracking-widest">Security Orgs</h4>
-                        <p class="text-slate-500 text-[11px] leading-relaxed font-bold italic">Adherence to national data privacy standards and encrypted protocols.</p>
+                    <div class="bg-white p-12 rounded-[3.5rem] shadow-sm border-t-8 border-navy-blue text-center">
+                        <h4 class="font-black text-navy uppercase text-xs mb-4">Data Security</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed italic">Compliance-focused alliances with cybersecurity firms to protect sensitive student records.</p>
                     </div>
-                    <div class="p-10 bg-white rounded-[2.5rem] shadow-xl">
-                        <h4 class="font-black text-navy uppercase text-xs mb-3 tracking-widest">Dev Communities</h4>
-                        <p class="text-slate-500 text-[11px] leading-relaxed font-bold italic">Connecting with local tech talent to drive innovation in Talisay City.</p>
+                    <div class="bg-white p-12 rounded-[3.5rem] shadow-sm border-t-8 border-green-400 text-center">
+                        <h4 class="font-black text-navy uppercase text-xs mb-4">Dev Hubs</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed italic">Connecting with local talent communities to drive innovation in regional tech solutions.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="inquire" class="content-section py-32 px-6">
-            <div class="max-w-3xl mx-auto bg-white p-16 rounded-[4rem] shadow-2xl border">
-                <h2 class="text-4xl font-black text-navy uppercase italic mb-8 text-center">Initiate Your Project</h2>
+            <div class="max-w-3xl mx-auto bg-white p-16 rounded-[4rem] shadow-2xl border border-slate-100">
+                <h2 class="text-4xl font-black text-navy uppercase italic mb-8 text-center">Contact The Firm</h2>
                 <form class="space-y-6">
-                    <input type="text" placeholder="School Name" class="w-full p-5 bg-slate-50 rounded-2xl outline-none focus:ring-2 ring-green-400">
-                    <input type="email" placeholder="Official Contact Email" class="w-full p-5 bg-slate-50 rounded-2xl outline-none focus:ring-2 ring-green-400">
                     <div class="grid md:grid-cols-2 gap-6">
-                        <select class="w-full p-5 bg-slate-50 rounded-2xl outline-none focus:ring-2 ring-green-400 font-bold">
-                            <option>Request Consultation</option>
-                            <option>Schedule Demo</option>
-                            <option>Request Proposal</option>
-                        </select>
-                        <input type="number" placeholder="No. of Students" class="w-full p-5 bg-slate-50 rounded-2xl outline-none focus:ring-2 ring-green-400">
+                        <input type="text" placeholder="School/Institution Name" class="w-full p-5 bg-slate-50 rounded-2xl outline-none focus:ring-2 ring-green-400">
+                        <input type="text" placeholder="Contact Person" class="w-full p-5 bg-slate-50 rounded-2xl outline-none focus:ring-2 ring-green-400">
                     </div>
-                    <textarea placeholder="Tell us about the services your institution needs..." class="w-full p-5 bg-slate-100 rounded-2xl outline-none focus:ring-2 ring-green-400 h-32"></textarea>
-                    <button type="button" onclick="alert('Proposal Logged.')" class="w-full bg-navy-blue text-white py-6 rounded-2xl font-black uppercase tracking-widest hover:bg-green-500 transition">Submit Formal Request</button>
+                    <input type="email" placeholder="Official Business Email" class="w-full p-5 bg-slate-50 rounded-2xl outline-none focus:ring-2 ring-green-400">
+                    <textarea placeholder="Outline your institutional requirements..." class="w-full p-5 bg-slate-50 rounded-2xl outline-none focus:ring-2 ring-green-400 h-32"></textarea>
+                    <button type="button" onclick="alert('Inquiry successfully sent.')" class="w-full bg-[#0C4A6E] text-white py-6 rounded-3xl font-black uppercase tracking-widest hover:bg-green-500 shadow-xl transition">Submit Request</button>
                 </form>
             </div>
         </section>
     </main>
 
     <script>
-        // PAGE SWAPPING
         function showPage(id) {
             document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
             document.getElementById(id).classList.add('active');
             window.scrollTo(0,0);
         }
 
-        // MEMBER PROFILES DATA
         const members = {
             'Lara': {
                 name: 'Lara Bongbong',
                 role: 'Lead Executive Officer',
-                info: 'Responsible for the overarching vision and high-level institutional negotiations. Oversees the alignment of StudentHub Solutions with national educational standards.',
-                img: 'https://i.ibb.co/XfR0p18z/member1.jpg' // PLACEHOLDER: Replace with your ImgBB link
+                info: 'Oversees the strategic direction and growth of StudentHub Solutions. Directs high-level institutional negotiations and vision alignment.',
+                img: 'https://i.ibb.co/qYQMmtTr/Screenshot-2026-03-08-at-5-08-53-PM.png'
             },
             'Kyla': {
                 name: 'Kyla Nicole Dimpaso',
                 role: 'Operations Manager',
-                info: 'Manages the day-to-day business logistics, ensuring project timelines are met and organizational efficiency is maintained across all development phases.',
-                img: 'https://i.ibb.co/XfR0p18z/member2.jpg'
+                info: 'Ensures operational excellence and workflow efficiency. Manages project timelines and business development logistics.',
+                img: 'https://i.ibb.co/pN9JTTn/Screenshot-2026-03-08-at-5-09-04-PM.png'
             },
             'Christine': {
                 name: 'Christine Diane Panerio',
                 role: 'Project Strategist',
-                info: 'Analyzes student community needs and campus service trends to develop hyper-localized integration strategies for our client schools.',
-                img: 'https://i.ibb.co/XfR0p18z/member3.jpg'
+                info: 'Responsible for localized research and integration models. Designs strategies that meet the unique digital needs of campus communities.',
+                img: 'https://i.ibb.co/kVN1DVPg/Screenshot-2026-03-08-at-5-09-17-PM.png'
             },
             'Clark': {
                 name: 'Clark Sasil',
                 role: 'Technical Director',
-                info: 'Leads the architecture of our secure database vaults and back-end integration modules. Primary expert in cybersecurity and institutional data protection.',
-                img: 'https://i.ibb.co/XfR0p18z/member4.jpg'
+                info: 'Architect of StudentHub Solutions infrastructure. Leads development of secure database systems and backend institutional portals.',
+                img: 'https://i.ibb.co/6JHNftgj/Screenshot-2026-03-08-at-5-09-31-PM.png'
             },
             'Brethney': {
                 name: 'Brethney Kate Tañola',
                 role: 'Communications Head',
-                info: 'Official liaison between our development team and school administrations. Manages all PR, user engagement, and stakeholder feedback loops.',
-                img: 'https://i.ibb.co/XfR0p18z/member5.jpg'
+                info: 'Manages all institutional communications and stakeholder relationships. Liaisons between clients and the development team.',
+                img: 'https://i.ibb.co/vCYZgTCv/Screenshot-2026-03-08-at-5-09-39-PM.png'
             }
         };
 
         function openMember(key) {
             const data = members[key];
             const html = `
-                <div class="w-full aspect-square rounded-[3rem] overflow-hidden bg-slate-100 mb-8 border-4 border-green-500 shadow-xl">
-                    <img src="${data.img}" class="w-full h-full object-cover" alt="Profile Picture">
+                <div class="w-full aspect-square rounded-[3.5rem] overflow-hidden bg-slate-100 mb-10 border-4 border-green-500 shadow-xl">
+                    <img src="${data.img}" class="w-full h-full object-cover">
                 </div>
-                <h2 class="text-3xl font-black text-navy uppercase italic mb-2">${data.name}</h2>
-                <p class="text-green-500 font-black text-[10px] uppercase tracking-widest mb-8 italic">${data.role}</p>
-                <div class="h-px bg-slate-100 mb-8"></div>
-                <p class="text-slate-500 text-sm leading-relaxed mb-10">${data.info}</p>
-                <div class="bg-slate-50 p-6 rounded-3xl">
-                    <h5 class="text-[9px] font-black uppercase text-navy mb-2">Core Competency</h5>
-                    <p class="text-[11px] font-bold text-slate-400">Institutional Digital Transformation & Strategy</p>
+                <h2 class="text-3xl font-black text-navy uppercase italic mb-2 tracking-tighter">${data.name}</h2>
+                <p class="text-green-500 font-black text-[10px] uppercase tracking-widest mb-10 italic">${data.role}</p>
+                <p class="text-slate-500 text-sm leading-relaxed mb-12">${data.info}</p>
+                <div class="p-8 bg-slate-50 rounded-[2.5rem] border">
+                    <h5 class="text-[9px] font-black uppercase text-navy mb-2 tracking-widest">Focus Area</h5>
+                    <p class="text-[11px] font-bold text-slate-400">Enterprise Campus Transformation</p>
                 </div>
             `;
             document.getElementById('memberContent').innerHTML = html;
             document.getElementById('memberPanel').classList.add('open');
             document.getElementById('memberOverlay').classList.remove('hidden');
+            setTimeout(() => document.getElementById('memberOverlay').style.opacity = '1', 10);
         }
 
         function closeMember() {
             document.getElementById('memberPanel').classList.remove('open');
-            document.getElementById('memberOverlay').classList.add('hidden');
+            document.getElementById('memberOverlay').style.opacity = '0';
+            setTimeout(() => document.getElementById('memberOverlay').classList.add('hidden'), 300);
         }
     </script>
 </body>
