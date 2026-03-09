@@ -15,11 +15,13 @@
         .content-section { display: none; }
         .content-section.active { display: block; animation: fadeIn 0.4s ease-in-out; }
         
-        /* Executive Card Design */
-        .exec-card { transition: all 0.4s ease; cursor: pointer; border: 2px solid transparent; }
-        .exec-card:hover { transform: scale(1.05); border-color: #4ADE80; background: #0c3e5c; }
+        /* Executive & Expertise Card Design */
+        .exec-card, .expertise-card { transition: all 0.4s ease; cursor: pointer; border: 2px solid transparent; }
+        .exec-card:hover, .expertise-card:hover { transform: scale(1.05); border-color: #4ADE80; }
+        .exec-card:hover { background: #0c3e5c; }
+        .expertise-card:hover { background: #ffffff; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1); }
 
-        /* Dynamic Sidebar for Member Info */
+        /* Dynamic Sidebar for Content */
         #memberPanel { transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); transform: translateX(100%); }
         #memberPanel.open { transform: translateX(0); }
     </style>
@@ -45,7 +47,7 @@
 
     <div id="memberOverlay" onclick="closeMember()" class="fixed inset-0 bg-navy-blue/70 backdrop-blur-sm z-[110] hidden opacity-0 transition-opacity"></div>
     <div id="memberPanel" class="fixed top-0 right-0 h-full w-full md:w-[500px] bg-white z-[120] shadow-2xl p-12 overflow-y-auto">
-        <button onclick="closeMember()" class="text-slate-400 font-black text-[10px] uppercase mb-10 tracking-widest hover:text-red-500">← Back to Team</button>
+        <button id="backBtn" onclick="closeMember()" class="text-slate-400 font-black text-[10px] uppercase mb-10 tracking-widest hover:text-red-500">← Back</button>
         <div id="memberContent"></div>
     </div>
 
@@ -114,7 +116,30 @@
             </div>
         </section>
 
-        <section id="partners" class="content-section py-32 bg-slate-100 px-6">
+        <section id="products" class="content-section py-32 bg-slate-100 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-20">
+                    <h2 class="text-5xl font-black text-navy uppercase italic mb-4">Core Expertise</h2>
+                    <p class="text-slate-400 font-bold text-[10px] uppercase tracking-[0.4em]">Our Specialized Technical Solutions</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div onclick="openExpertise('Portals')" class="expertise-card bg-white p-12 rounded-[4rem] shadow-sm">
+                        <div class="text-4xl mb-6">🏛️</div>
+                        <h3 class="text-2xl font-black text-navy uppercase italic mb-4">Institutional Portals</h3>
+                        <p class="text-slate-500 text-sm mb-8 leading-relaxed italic">Centralized hubs designed to bridge the gap between students and campus resources.</p>
+                        <span class="text-[9px] font-black uppercase text-green-500 tracking-widest">Learn More +</span>
+                    </div>
+                    <div onclick="openExpertise('Admin')" class="expertise-card bg-white p-12 rounded-[4rem] shadow-sm">
+                        <div class="text-4xl mb-6">⚙️</div>
+                        <h3 class="text-2xl font-black text-navy uppercase italic mb-4">Admin Ecosystems</h3>
+                        <p class="text-slate-500 text-sm mb-8 leading-relaxed italic">Secure, robust management systems for handling institutional data and administrative workflows.</p>
+                        <span class="text-[9px] font-black uppercase text-green-500 tracking-widest">Learn More +</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="partners" class="content-section py-32 bg-white px-6">
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-20">
                     <h2 class="text-4xl font-black text-navy uppercase italic">Global Ecosystem</h2>
@@ -197,8 +222,22 @@
             }
         };
 
+        const expertise = {
+            'Portals': {
+                title: 'Institutional Portals',
+                desc: 'A complete digital gateway for school campuses.',
+                features: ['Custom Institutional Branding', 'Dynamic News & Announcement Feed', 'Integrated Campus Directories', 'Mobile-Responsive UI/UX']
+            },
+            'Admin': {
+                title: 'Admin Ecosystems',
+                desc: 'Powerful backend tools for school management.',
+                features: ['Secure Student Databases', 'Automated Administrative Reports', 'Workflow Optimization Tools', 'Bank-Grade Data Encryption']
+            }
+        };
+
         function openMember(key) {
             const data = members[key];
+            document.getElementById('backBtn').innerText = '← Back to Team';
             const html = `
                 <div class="w-full aspect-square rounded-[3.5rem] overflow-hidden bg-slate-100 mb-10 border-4 border-green-500 shadow-xl">
                     <img src="${data.img}" class="w-full h-full object-cover">
@@ -210,6 +249,27 @@
                     <h5 class="text-[9px] font-black uppercase text-navy mb-2 tracking-widest">Focus Area</h5>
                     <p class="text-[11px] font-bold text-slate-400">Enterprise Campus Transformation</p>
                 </div>
+            `;
+            document.getElementById('memberContent').innerHTML = html;
+            document.getElementById('memberPanel').classList.add('open');
+            document.getElementById('memberOverlay').classList.remove('hidden');
+            setTimeout(() => document.getElementById('memberOverlay').style.opacity = '1', 10);
+        }
+
+        function openExpertise(key) {
+            const data = expertise[key];
+            document.getElementById('backBtn').innerText = '← Back to Services';
+            const html = `
+                <div class="p-10 bg-green-500 rounded-[3rem] text-white mb-10 shadow-xl">
+                    <h2 class="text-3xl font-black uppercase italic">${data.title}</h2>
+                    <p class="text-[10px] font-black uppercase tracking-widest opacity-80 mt-2">Specialized Solution</p>
+                </div>
+                <p class="text-slate-600 font-bold italic mb-8 leading-relaxed">${data.desc}</p>
+                <h5 class="text-[10px] font-black uppercase text-navy mb-4 tracking-widest">Key Capabilities:</h5>
+                <ul class="space-y-4">
+                    ${data.features.map(f => `<li class="flex items-center gap-4 text-sm font-bold text-navy"><span class="w-2 h-2 bg-green-500 rounded-full"></span> ${f}</li>`).join('')}
+                </ul>
+                <button onclick="showPage('inquire'); closeMember();" class="w-full mt-12 bg-navy-blue text-white py-6 rounded-3xl font-black uppercase text-xs tracking-widest">Inquire About This Service</button>
             `;
             document.getElementById('memberContent').innerHTML = html;
             document.getElementById('memberPanel').classList.add('open');
